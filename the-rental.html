@@ -245,6 +245,17 @@
   .during .phase-badge { background: rgba(212,150,10,.12); color: var(--during-c); }
   .after  .phase-badge { background: rgba(58,94,66,.12);  color: var(--after-c); }
 
+  /* ── ROOM TABS ── */
+  .room-tab {
+    background: var(--card-bg); border: 2px solid var(--tan);
+    border-radius: 20px; padding: .4rem 1rem;
+    font-family: var(--sans); font-size: .8rem; font-weight: 700;
+    color: var(--muted); cursor: pointer; transition: all .2s;
+    white-space: nowrap;
+  }
+  .room-tab:hover { border-color: var(--rust); color: var(--rust); }
+  .room-tab.active { background: var(--navy); border-color: var(--navy); color: var(--gold-lt); }
+
   /* ── DRIVE NOTE ── */
   .drive-note {
     margin-top: 1.5rem;
@@ -330,162 +341,152 @@
 <div class="gallery-wrap">
   <div class="gallery-section-header">
     <h2>The Full Journey</h2>
-    <p>before / during / after</p>
+    <p>browse by room</p>
   </div>
 
-  <!-- TABS -->
-  <div class="phase-tabs">
-    <button class="phase-tab active" data-phase="before" onclick="switchPhase('before')">
-      🏚️ Before
-      <span class="tab-sub">The time machine</span>
-    </button>
-    <button class="phase-tab" data-phase="during" onclick="switchPhase('during')">
-      🔨 During
-      <span class="tab-sub">Controlled chaos</span>
-    </button>
-    <button class="phase-tab" data-phase="after" onclick="switchPhase('after')">
-      ✨ After
-      <span class="tab-sub">Brand new everything</span>
-    </button>
+  <!-- ROOM TABS -->
+  <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem;" id="room-tabs">
+    <button class="room-tab active" onclick="switchRoom('before-after')">🏠 Before &amp; After</button>
+    <button class="room-tab" onclick="switchRoom('kitchen')">🍳 Kitchen</button>
+    <button class="room-tab" onclick="switchRoom('first-floor')">🛋️ First Floor</button>
+    <button class="room-tab" onclick="switchRoom('master')">🛏️ Master Bed/Bath</button>
+    <button class="room-tab" onclick="switchRoom('upper-bed')">🛏️ Upper Bedrooms</button>
+    <button class="room-tab" onclick="switchRoom('upper-bath')">🚿 Upper Bathroom</button>
+    <button class="room-tab" onclick="switchRoom('stairwell')">🪜 Stairwell</button>
+    <button class="room-tab" onclick="switchRoom('mudroom')">🥾 Mudroom</button>
+    <button class="room-tab" onclick="switchRoom('outside')">🌿 Outside</button>
+    <button class="room-tab" onclick="switchRoom('basement')">🔧 Basement</button>
+    <button class="room-tab" onclick="switchRoom('windows')">🪟 Windows</button>
   </div>
 
-  <!-- BEFORE -->
-  <div class="gallery-panel active" id="panel-before">
+  <!-- BEFORE & AFTER -->
+  <div class="gallery-panel active" id="panel-before-after">
     <div class="phase-intro">
-      <div class="pi-icon">🏚️</div>
-      <p><strong>The time machine.</strong> Shaggy blue carpet. Smoke-stained walls. A 1925 build that hadn't had a deep refresh in decades. This is what we said yes to — and we'd do it again.</p>
+      <div class="pi-icon">🏠</div>
+      <p><strong>The full transformation.</strong> Side-by-side comparisons from across the house — from the time machine we bought to the home we handed to its next chapter.</p>
     </div>
-    <div class="photo-grid" id="grid-before">
-      <!-- Photos injected by JS or use placeholders below -->
+    <div class="photo-grid">
       <div class="photo-card before">
-        <div class="photo-placeholder"><span>📷</span><span class="ph-label">Add photo</span></div>
-        <div class="card-body">
-          <span class="phase-badge">Before</span>
-          <h4>Living Room</h4>
-          <p>The infamous shaggy blue carpet in its full glory.</p>
-        </div>
+        <img src="https://smallcox-bigprojects-public.s3.us-east-2.amazonaws.com/BigProjects/TheRental/reno_images/before/BathroomA.jpg" alt="Bathroom Before" onerror="this.parentElement.querySelector('.ph-fallback').style.display='flex';this.style.display='none'">
+        <div class="photo-placeholder ph-fallback" style="display:none"><span>📷</span><span class="ph-label">BathroomA</span></div>
+        <div class="card-body"><span class="phase-badge">Before</span><h4>Bathroom</h4><p>The original bathroom — untouched since 1925.</p></div>
+      </div>
+      <div class="photo-card after">
+        <img src="https://smallcox-bigprojects-public.s3.us-east-2.amazonaws.com/BigProjects/TheRental/reno_images/after/BathroomA.jpg" alt="Bathroom After" onerror="this.parentElement.querySelector('.ph-fallback').style.display='flex';this.style.display='none'">
+        <div class="photo-placeholder ph-fallback" style="display:none"><span>📷</span><span class="ph-label">BathroomA — After</span></div>
+        <div class="card-body"><span class="phase-badge">After</span><h4>Bathroom</h4><p>Fresh tile, new fixtures, modern finish.</p></div>
       </div>
       <div class="photo-card before">
-        <div class="photo-placeholder"><span>📷</span><span class="ph-label">Add photo</span></div>
-        <div class="card-body">
-          <span class="phase-badge">Before</span>
-          <h4>Kitchen</h4>
-          <p>Original everything. Decades of character (and grease).</p>
-        </div>
+        <img src="https://smallcox-bigprojects-public.s3.us-east-2.amazonaws.com/BigProjects/TheRental/reno_images/before/Kitchen.jpg" alt="Kitchen Before" onerror="this.parentElement.querySelector('.ph-fallback').style.display='flex';this.style.display='none'">
+        <div class="photo-placeholder ph-fallback" style="display:none"><span>📷</span><span class="ph-label">Kitchen — Before</span></div>
+        <div class="card-body"><span class="phase-badge">Before</span><h4>Kitchen</h4><p>Original everything. Decades of character (and grease).</p></div>
+      </div>
+      <div class="photo-card after">
+        <img src="https://smallcox-bigprojects-public.s3.us-east-2.amazonaws.com/BigProjects/TheRental/reno_images/after/Kitchen.jpg" alt="Kitchen After" onerror="this.parentElement.querySelector('.ph-fallback').style.display='flex';this.style.display='none'">
+        <div class="photo-placeholder ph-fallback" style="display:none"><span>📷</span><span class="ph-label">Kitchen — After</span></div>
+        <div class="card-body"><span class="phase-badge">After</span><h4>Kitchen</h4><p>Brand new everything. Mallory approved.</p></div>
       </div>
       <div class="photo-card before">
-        <div class="photo-placeholder"><span>📷</span><span class="ph-label">Add photo</span></div>
-        <div class="card-body">
-          <span class="phase-badge">Before</span>
-          <h4>Walls & Ceilings</h4>
-          <p>Smoke stains that told a thousand stories.</p>
-        </div>
+        <img src="https://smallcox-bigprojects-public.s3.us-east-2.amazonaws.com/BigProjects/TheRental/reno_images/before/Outside.jpg" alt="Outside Before" onerror="this.parentElement.querySelector('.ph-fallback').style.display='flex';this.style.display='none'">
+        <div class="photo-placeholder ph-fallback" style="display:none"><span>📷</span><span class="ph-label">Outside — Before</span></div>
+        <div class="card-body"><span class="phase-badge">Before</span><h4>Exterior</h4><p>A 1925 original — foundation and all.</p></div>
       </div>
-      <div class="photo-card before">
-        <div class="photo-placeholder"><span>📷</span><span class="ph-label">Add photo</span></div>
-        <div class="card-body">
-          <span class="phase-badge">Before</span>
-          <h4>Exterior</h4>
-          <p>A 1925 original — foundation and all.</p>
-        </div>
+      <div class="photo-card after">
+        <img src="https://smallcox-bigprojects-public.s3.us-east-2.amazonaws.com/BigProjects/TheRental/reno_images/after/Outside.jpg" alt="Outside After" onerror="this.parentElement.querySelector('.ph-fallback').style.display='flex';this.style.display='none'">
+        <div class="photo-placeholder ph-fallback" style="display:none"><span>📷</span><span class="ph-label">Outside — After</span></div>
+        <div class="card-body"><span class="phase-badge">After</span><h4>Exterior</h4><p>Curb appeal restored. 1925 structure, 2020 finish.</p></div>
       </div>
-    </div>
-    <div class="drive-note">
-      <p>📁 Photos live in Google Drive → <strong>Rehab / Before</strong>.<br>Copy to S3 and replace placeholder cards with <code>&lt;img&gt;</code> tags.</p>
-      <a class="btn-drive" href="https://drive.google.com/drive/folders/17dDaaiZ_2Nm2hHF7G3RGyDm_U9ZXR4Pi" target="_blank">Open Drive Folder</a>
     </div>
   </div>
 
-  <!-- DURING -->
-  <div class="gallery-panel" id="panel-during">
+  <!-- KITCHEN -->
+  <div class="gallery-panel" id="panel-kitchen">
     <div class="phase-intro">
-      <div class="pi-icon">🔨</div>
-      <p><strong>Controlled chaos.</strong> Foundational repairs, walls coming down, and the satisfying destruction before the build-back. This is where the house stopped being a relic and started becoming a home again.</p>
+      <div class="pi-icon">🍳</div>
+      <p><strong>Kitchen.</strong> Original cabinets, original everything — then gutted and rebuilt from scratch. Brand new everything, Mallory approved.</p>
     </div>
-    <div class="photo-grid" id="grid-during">
-      <div class="photo-card during">
-        <div class="photo-placeholder"><span>📷</span><span class="ph-label">Add photo</span></div>
-        <div class="card-body">
-          <span class="phase-badge">During</span>
-          <h4>Demo Day</h4>
-          <p>Out with the old. The carpet went first.</p>
-        </div>
-      </div>
-      <div class="photo-card during">
-        <div class="photo-placeholder"><span>📷</span><span class="ph-label">Add photo</span></div>
-        <div class="card-body">
-          <span class="phase-badge">During</span>
-          <h4>Foundational Work</h4>
-          <p>The unglamorous stuff that makes everything else possible.</p>
-        </div>
-      </div>
-      <div class="photo-card during">
-        <div class="photo-placeholder"><span>📷</span><span class="ph-label">Add photo</span></div>
-        <div class="card-body">
-          <span class="phase-badge">During</span>
-          <h4>New Walls</h4>
-          <p>Replacing walls — the blank canvas phase.</p>
-        </div>
-      </div>
-      <div class="photo-card during">
-        <div class="photo-placeholder"><span>📷</span><span class="ph-label">Add photo</span></div>
-        <div class="card-body">
-          <span class="phase-badge">During</span>
-          <h4>Progress Shots</h4>
-          <p>Somewhere between disaster and done.</p>
-        </div>
-      </div>
-    </div>
-    <div class="drive-note">
-      <p>📁 Photos live in Google Drive → <strong>Rehab / During</strong>.<br>Copy to S3 and replace placeholder cards with <code>&lt;img&gt;</code> tags.</p>
-      <a class="btn-drive" href="https://drive.google.com/drive/folders/17dDaaiZ_2Nm2hHF7G3RGyDm_U9ZXR4Pi" target="_blank">Open Drive Folder</a>
-    </div>
+    <div class="photo-grid" id="grid-kitchen"></div>
   </div>
 
-  <!-- AFTER -->
-  <div class="gallery-panel" id="panel-after">
+  <!-- FIRST FLOOR -->
+  <div class="gallery-panel" id="panel-first-floor">
     <div class="phase-intro">
-      <div class="pi-icon">✨</div>
-      <p><strong>Brand new everything.</strong> A complete transformation that honored the bones of a 1925 home while making it livable, lovable, and rentable. Our rapid-start into real estate.</p>
+      <div class="pi-icon">🛋️</div>
+      <p><strong>First Floor.</strong> The infamous shaggy blue carpet lived here. New floors, fresh walls, and a complete overhaul of the main living space.</p>
     </div>
-    <div class="photo-grid" id="grid-after">
-      <div class="photo-card after">
-        <div class="photo-placeholder"><span>📷</span><span class="ph-label">Add photo</span></div>
-        <div class="card-body">
-          <span class="phase-badge">After</span>
-          <h4>Living Room</h4>
-          <p>No blue carpet. Just clean floors and fresh walls.</p>
-        </div>
-      </div>
-      <div class="photo-card after">
-        <div class="photo-placeholder"><span>📷</span><span class="ph-label">Add photo</span></div>
-        <div class="card-body">
-          <span class="phase-badge">After</span>
-          <h4>Kitchen</h4>
-          <p>Brand new everything. Mallory approved.</p>
-        </div>
-      </div>
-      <div class="photo-card after">
-        <div class="photo-placeholder"><span>📷</span><span class="ph-label">Add photo</span></div>
-        <div class="card-body">
-          <span class="phase-badge">After</span>
-          <h4>Exterior</h4>
-          <p>Curb appeal restored. 1925 structure, 2020 finish.</p>
-        </div>
-      </div>
-      <div class="photo-card after">
-        <div class="photo-placeholder"><span>📷</span><span class="ph-label">Add photo</span></div>
-        <div class="card-body">
-          <span class="phase-badge">After</span>
-          <h4>The Full Reveal</h4>
-          <p>From time machine to turnkey rental.</p>
-        </div>
-      </div>
+    <div class="photo-grid" id="grid-first-floor"></div>
+  </div>
+
+  <!-- MASTER BED/BATH -->
+  <div class="gallery-panel" id="panel-master">
+    <div class="phase-intro">
+      <div class="pi-icon">🛏️</div>
+      <p><strong>Master Bed/Bath.</strong> A private retreat — rebuilt from the walls out.</p>
     </div>
-    <div class="drive-note">
-      <p>📁 Photos live in Google Drive → <strong>Rehab / After</strong>.<br>Copy to S3 and replace placeholder cards with <code>&lt;img&gt;</code> tags.</p>
-      <a class="btn-drive" href="https://drive.google.com/drive/folders/17dDaaiZ_2Nm2hHF7G3RGyDm_U9ZXR4Pi" target="_blank">Open Drive Folder</a>
+    <div class="photo-grid" id="grid-master"></div>
+  </div>
+
+  <!-- UPPER BEDROOMS -->
+  <div class="gallery-panel" id="panel-upper-bed">
+    <div class="phase-intro">
+      <div class="pi-icon">🛏️</div>
+      <p><strong>Upper Bedrooms.</strong> The upper level rooms — freshened up and ready for the next family.</p>
     </div>
+    <div class="photo-grid" id="grid-upper-bed"></div>
+  </div>
+
+  <!-- UPPER BATHROOM -->
+  <div class="gallery-panel" id="panel-upper-bath">
+    <div class="phase-intro">
+      <div class="pi-icon">🚿</div>
+      <p><strong>Upper Bathroom.</strong> New tile, new fixtures — from vintage to move-in ready.</p>
+    </div>
+    <div class="photo-grid" id="grid-upper-bath"></div>
+  </div>
+
+  <!-- STAIRWELL -->
+  <div class="gallery-panel" id="panel-stairwell">
+    <div class="phase-intro">
+      <div class="pi-icon">🪜</div>
+      <p><strong>Stairwell.</strong> The spine of the house — stripped back and brought back to life.</p>
+    </div>
+    <div class="photo-grid" id="grid-stairwell"></div>
+  </div>
+
+  <!-- MUDROOM -->
+  <div class="gallery-panel" id="panel-mudroom">
+    <div class="phase-intro">
+      <div class="pi-icon">🥾</div>
+      <p><strong>Mudroom.</strong> The first thing you see coming in. Made it count.</p>
+    </div>
+    <div class="photo-grid" id="grid-mudroom"></div>
+  </div>
+
+  <!-- OUTSIDE -->
+  <div class="gallery-panel" id="panel-outside">
+    <div class="phase-intro">
+      <div class="pi-icon">🌿</div>
+      <p><strong>Outside.</strong> Curb appeal restored — 1925 bones, 2020 finish.</p>
+    </div>
+    <div class="photo-grid" id="grid-outside"></div>
+  </div>
+
+  <!-- BASEMENT -->
+  <div class="gallery-panel" id="panel-basement">
+    <div class="phase-intro">
+      <div class="pi-icon">🔧</div>
+      <p><strong>Basement.</strong> The unglamorous stuff that makes everything else possible — mechanical, structural, foundational.</p>
+    </div>
+    <div class="photo-grid" id="grid-basement"></div>
+  </div>
+
+  <!-- WINDOWS -->
+  <div class="gallery-panel" id="panel-windows">
+    <div class="phase-intro">
+      <div class="pi-icon">🪟</div>
+      <p><strong>Windows.</strong> New windows throughout — natural light, proper insulation, the works.</p>
+    </div>
+    <div class="photo-grid" id="grid-windows"></div>
   </div>
 
 </div><!-- /gallery-wrap -->
@@ -498,11 +499,80 @@
 </footer>
 
 <script>
-  function switchPhase(phase) {
-    document.querySelectorAll('.phase-tab').forEach(t => t.classList.remove('active'));
+  const S3 = 'https://smallcox-bigprojects-public.s3.us-east-2.amazonaws.com/BigProjects/TheRental/reno_images';
+
+  // Room → { folder, phase, caption, files[] }
+  // Files are tried in order; onerror hides the card gracefully.
+  const ROOMS = {
+    'kitchen':    { folder:'Kitchen',       phase:'before', label:'Kitchen',        caption:'Original everything. Decades of character (and grease).',
+                    files:['Kitchen.jpg','Kitchen1.jpg','Kitchen2.jpg','Kitchen3.jpg','KitchenA.jpg','KitchenB.jpg'] },
+    'first-floor':{ folder:'First Floor',   phase:'before', label:'First Floor',    caption:'The infamous shaggy blue carpet — and the floors beneath it.',
+                    files:['FirstFloor.jpg','FirstFloor1.jpg','FirstFloor2.jpg','FirstFloor3.jpg','LivingRoom.jpg','LivingRoom1.jpg'] },
+    'master':     { folder:'Master Bed_Bath', phase:'before', label:'Master Bed/Bath', caption:'A private retreat — rebuilt from the walls out.',
+                    files:['MasterBed.jpg','MasterBath.jpg','Master1.jpg','Master2.jpg','MasterBedBath.jpg'] },
+    'upper-bed':  { folder:'Upper Bedrooms', phase:'before', label:'Upper Bedrooms', caption:'The upper level rooms — freshened up for the next family.',
+                    files:['UpperBed.jpg','UpperBedroom.jpg','UpperBedroom1.jpg','UpperBedroom2.jpg','Bedroom1.jpg','Bedroom2.jpg'] },
+    'upper-bath': { folder:'Upper Bathroom', phase:'before', label:'Upper Bathroom', caption:'New tile, new fixtures — from vintage to move-in ready.',
+                    files:['UpperBath.jpg','UpperBathroom.jpg','Bathroom.jpg','BathroomB.jpg','Bath1.jpg'] },
+    'stairwell':  { folder:'Stairwell',     phase:'during', label:'Stairwell',      caption:'The spine of the house — stripped back and brought back to life.',
+                    files:['Stairwell.jpg','Stairwell1.jpg','Stairwell2.jpg','Stairs.jpg'] },
+    'mudroom':    { folder:'Mudroom',       phase:'during', label:'Mudroom',        caption:'The first thing you see coming in. Made it count.',
+                    files:['Mudroom.jpg','Mudroom1.jpg','Mudroom2.jpg'] },
+    'outside':    { folder:'Outside',       phase:'before', label:'Outside',        caption:'1925 bones — curb appeal restored.',
+                    files:['Outside.jpg','Outside1.jpg','Outside2.jpg','Exterior.jpg','Front.jpg'] },
+    'basement':   { folder:'Basement',      phase:'during', label:'Basement',       caption:'The unglamorous stuff that makes everything else possible.',
+                    files:['Basement.jpg','Basement1.jpg','Basement2.jpg','Foundation.jpg'] },
+    'windows':    { folder:'Windows',       phase:'during', label:'Windows',        caption:'New windows throughout — natural light, proper insulation.',
+                    files:['Windows.jpg','Window.jpg','Windows1.jpg','Windows2.jpg'] },
+  };
+
+  function makeCard(src, roomKey, filename) {
+    const room = ROOMS[roomKey];
+    const phase = room ? room.phase : 'before';
+    const label = room ? room.label : filename.replace(/\.[^.]+$/,'').replace(/([A-Z])/g,' $1').trim();
+    const caption = room ? room.caption : '';
+    const name = filename.replace(/\.[^.]+$/,'').replace(/([A-Z0-9])/g,' $1').trim();
+
+    const card = document.createElement('div');
+    card.className = 'photo-card ' + phase;
+    card.innerHTML = `
+      <img src="${src}" alt="${label}" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;">
+      <div class="card-body">
+        <span class="phase-badge">${phase.charAt(0).toUpperCase()+phase.slice(1)}</span>
+        <h4>${name}</h4>
+        <p>${caption}</p>
+      </div>`;
+    // hide card if image fails
+    card.querySelector('img').onerror = () => card.style.display = 'none';
+    return card;
+  }
+
+  function loadRoomGrid(roomKey) {
+    const room = ROOMS[roomKey];
+    if (!room) return;
+    const grid = document.getElementById('grid-' + roomKey);
+    if (!grid || grid.dataset.loaded) return;
+    grid.dataset.loaded = 'true';
+
+    room.files.forEach(file => {
+      // Try both before/ and after/ prefixes for each file
+      ['before','after','during'].forEach(phase => {
+        const src = `${S3}/${phase}/${file}`;
+        const card = makeCard(src, roomKey, file);
+        // Override phase badge to match actual folder
+        card.querySelector('.phase-badge').textContent = phase.charAt(0).toUpperCase()+phase.slice(1);
+        card.className = 'photo-card ' + phase;
+        grid.appendChild(card);
+      });
+    });
+  }
+
+  function switchRoom(room) {
+    document.querySelectorAll('.room-tab').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.gallery-panel').forEach(p => p.classList.remove('active'));
-    document.querySelector('[data-phase="' + phase + '"]').classList.add('active');
-    document.getElementById('panel-' + phase).classList.add('active');
+    document.querySelector(`[onclick="switchRoom('${room}')"]`).classList.add('active');
+    document.getElementById('panel-' + room).classList.add('active');
+    if (room !== 'before-after') loadRoomGrid(room);
   }
 </script>
 
