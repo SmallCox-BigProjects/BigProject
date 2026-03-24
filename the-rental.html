@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Rental — Small-Cox, Big Projects</title>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Nunito:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream:    #FAF4E8;
+    --tan:      #E8D9B8;
+    --rust:     #C45C2A;
+    --rust-lt:  #E87B48;
+    --forest:   #3A5E42;
+    --forest-lt:#5A8C63;
+    --navy:     #243556;
+    --gold:     #D4960A;
+    --gold-lt:  #F2B830;
+    --brown:    #6B3F1F;
+    --ink:      #1E1810;
+    --muted:    #7A6A54;
+    --card-bg:  #FFFDF6;
+    --serif:    'Abril Fatface', serif;
+    --sans:     'Nunito', sans-serif;
+
+    --before-c: #C45C2A;
+    --during-c: #D4960A;
+    --after-c:  #3A5E42;
+  }
+
+  body {
+    background-color: var(--cream);
+    font-family: var(--sans);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg,   transparent, transparent 2px, rgba(139,110,60,.03) 2px, rgba(139,110,60,.03) 3px),
+      repeating-linear-gradient(90deg,  transparent, transparent 2px, rgba(139,110,60,.02) 2px, rgba(139,110,60,.02) 3px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--navy);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 54px;
+    border-bottom: 3px solid var(--gold);
+  }
+  .nav-logo {
+    font-family: var(--serif); font-size: 1.15rem;
+    color: var(--gold-lt); letter-spacing: .5px; text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+  .nav-links a {
+    font-size: .8rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 1.2px; color: var(--tan); text-decoration: none; transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--gold-lt); }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative; z-index: 1;
+    background: var(--navy);
+    padding: 3.5rem 2rem 0;
+    text-align: center; overflow: hidden;
+  }
+  .hero-tape {
+    display: inline-block; background: var(--gold); color: var(--navy);
+    font-weight: 700; font-size: .72rem; text-transform: uppercase;
+    letter-spacing: 2px; padding: 5px 18px; border-radius: 3px; margin-bottom: 1.1rem;
+  }
+  .breadcrumb-nav {
+    font-size: .75rem; color: rgba(232,217,184,.55);
+    margin-bottom: .8rem; letter-spacing: .5px;
+  }
+  .breadcrumb-nav a { color: var(--gold-lt); text-decoration: none; }
+  .breadcrumb-nav a:hover { text-decoration: underline; }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.6rem, 8vw, 5.2rem);
+    line-height: 1.0; color: #FFFDF6; margin-bottom: .4rem; letter-spacing: .5px;
+  }
+  .hero h1 span { color: var(--gold-lt); }
+  .hero-sub {
+    font-size: 1.05rem; color: var(--tan);
+    font-style: italic; font-weight: 600; margin-bottom: 1.6rem;
+  }
+  .hero-meta-pills {
+    display: flex; flex-wrap: wrap; justify-content: center;
+    gap: .6rem; margin-bottom: 2.8rem;
+  }
+  .meta-pill {
+    background: rgba(255,255,255,.08); border: 1px solid rgba(232,217,184,.25);
+    border-radius: 20px; padding: 4px 14px;
+    font-size: .75rem; color: var(--tan); font-weight: 600;
+    letter-spacing: .5px;
+  }
+  .meta-pill span { color: var(--gold-lt); }
+  .hero-wave { display: block; width: 100%; margin-bottom: -2px; line-height: 0; }
+
+  /* ── ORIGIN STORY ── */
+  .origin {
+    position: relative; z-index: 1;
+    background: var(--cream);
+    padding: 3.5rem 1.5rem 2.5rem;
+    max-width: 820px; margin: 0 auto; text-align: center;
+  }
+  .section-label {
+    display: inline-block; font-family: var(--serif); font-size: .85rem;
+    background: var(--rust); color: #fff; padding: 4px 14px;
+    border-radius: 3px; letter-spacing: .5px; margin-bottom: 1.4rem;
+  }
+  .origin blockquote {
+    font-family: var(--serif);
+    font-size: clamp(1.15rem, 2.8vw, 1.5rem);
+    color: var(--navy); line-height: 1.5; margin-bottom: 1rem;
+  }
+  .origin blockquote em { color: var(--rust); font-style: normal; }
+  .origin p { font-size: .95rem; color: var(--muted); line-height: 1.7; max-width: 640px; margin: 0 auto; }
+
+  /* ── GALLERY SECTION ── */
+  .gallery-wrap {
+    position: relative; z-index: 1;
+    padding: 1rem 1.5rem 4rem;
+    max-width: 1060px; margin: 0 auto;
+  }
+  .gallery-section-header {
+    display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1.8rem; flex-wrap: wrap;
+  }
+  .gallery-section-header h2 {
+    font-family: var(--serif); font-size: 2.2rem; color: var(--navy);
+  }
+  .gallery-section-header p { font-size: .9rem; color: var(--muted); font-style: italic; }
+
+  /* ── PHASE TABS ── */
+  .phase-tabs {
+    display: flex; gap: 0;
+    border: 2px solid var(--tan); border-radius: 10px;
+    overflow: hidden; margin-bottom: 2rem;
+    background: var(--card-bg);
+  }
+  .phase-tab {
+    flex: 1; padding: .9rem 1rem;
+    text-align: center; cursor: pointer;
+    font-family: var(--serif); font-size: 1rem;
+    border: none; background: transparent;
+    color: var(--muted); transition: all .2s;
+    border-bottom: 3px solid transparent;
+  }
+  .phase-tab .tab-sub {
+    font-family: var(--sans); font-size: .7rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1px;
+    display: block; margin-top: 2px; opacity: .7;
+  }
+  .phase-tab:not(:last-child) { border-right: 2px solid var(--tan); }
+  .phase-tab:hover:not(.active) { background: var(--cream); color: var(--ink); }
+
+  .phase-tab.active[data-phase="before"] {
+    background: rgba(196,92,42,.08); color: var(--before-c);
+    border-bottom-color: var(--before-c);
+  }
+  .phase-tab.active[data-phase="during"] {
+    background: rgba(212,150,10,.08); color: var(--during-c);
+    border-bottom-color: var(--during-c);
+  }
+  .phase-tab.active[data-phase="after"] {
+    background: rgba(58,94,66,.08); color: var(--after-c);
+    border-bottom-color: var(--after-c);
+  }
+
+  /* ── PANELS ── */
+  .gallery-panel { display: none; }
+  .gallery-panel.active { display: block; }
+
+  .phase-intro {
+    background: var(--card-bg); border: 2px solid var(--tan);
+    border-radius: 12px; padding: 1.2rem 1.5rem;
+    margin-bottom: 1.6rem;
+    display: flex; align-items: flex-start; gap: 1rem;
+  }
+  .phase-intro .pi-icon { font-size: 2rem; flex-shrink: 0; }
+  .phase-intro p { font-size: .92rem; line-height: 1.65; color: var(--muted); }
+  .phase-intro p strong { color: var(--ink); }
+
+  /* ── PHOTO GRID ── */
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.2rem;
+  }
+  .photo-card {
+    background: var(--card-bg); border: 2px solid var(--tan);
+    border-radius: 12px; overflow: hidden;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .photo-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 5px 7px 0 var(--tan);
+  }
+  .photo-card.before:hover { border-color: var(--before-c); box-shadow: 5px 7px 0 rgba(196,92,42,.2); }
+  .photo-card.during:hover { border-color: var(--during-c); box-shadow: 5px 7px 0 rgba(212,150,10,.2); }
+  .photo-card.after:hover  { border-color: var(--after-c);  box-shadow: 5px 7px 0 rgba(58,94,66,.2); }
+
+  .photo-card img {
+    width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;
+  }
+  .photo-placeholder {
+    width: 100%; aspect-ratio: 4/3;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: .5rem;
+    font-size: 2.2rem;
+  }
+  .before .photo-placeholder { background: #f5ede6; }
+  .during .photo-placeholder { background: #faf3e0; }
+  .after  .photo-placeholder { background: #eaf2eb; }
+  .photo-placeholder .ph-label {
+    font-size: .68rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 1.5px; color: var(--muted);
+  }
+
+  .photo-card .card-body { padding: .9rem 1.1rem 1rem; }
+  .photo-card .card-body h4 {
+    font-family: var(--serif); font-size: 1.1rem;
+    color: var(--navy); margin-bottom: .2rem; line-height: 1.1;
+  }
+  .photo-card .card-body p { font-size: .82rem; color: var(--muted); line-height: 1.5; }
+
+  .phase-badge {
+    display: inline-block; font-size: .65rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1.2px;
+    padding: 2px 8px; border-radius: 3px; margin-bottom: .4rem;
+  }
+  .before .phase-badge { background: rgba(196,92,42,.12); color: var(--before-c); }
+  .during .phase-badge { background: rgba(212,150,10,.12); color: var(--during-c); }
+  .after  .phase-badge { background: rgba(58,94,66,.12);  color: var(--after-c); }
+
+  /* ── DRIVE NOTE ── */
+  .drive-note {
+    margin-top: 1.5rem;
+    background: var(--card-bg); border: 2px dashed var(--tan);
+    border-radius: 12px; padding: 1.5rem 1.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .drive-note p { font-size: .88rem; color: var(--muted); line-height: 1.6; }
+  .drive-note p strong { color: var(--ink); }
+  .drive-note a.btn-drive {
+    display: inline-block; background: var(--navy); color: var(--gold-lt);
+    font-size: .78rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 1px; padding: .55rem 1.3rem; border-radius: 4px;
+    text-decoration: none; white-space: nowrap; transition: background .2s;
+    flex-shrink: 0;
+  }
+  .drive-note a.btn-drive:hover { background: var(--brown); }
+
+  /* ── FOOTER ── */
+  footer {
+    position: relative; z-index: 1;
+    background: var(--navy); color: var(--tan);
+    text-align: center; padding: 2rem;
+    font-size: .82rem; border-top: 3px solid var(--gold);
+  }
+  .footer-logo { font-family: var(--serif); font-size: 1.5rem; color: var(--gold-lt); margin-bottom: .4rem; }
+  footer p { color: rgba(232,217,184,.55); margin-top: .3rem; }
+
+  @keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:none; } }
+  .fade-in   { animation: fadeUp .7s ease both; }
+  .fade-in-2 { animation: fadeUp .7s .15s ease both; }
+  .fade-in-3 { animation: fadeUp .7s .3s ease both; }
+
+  @media (max-width: 560px) {
+    .phase-tab { padding: .7rem .4rem; font-size: .9rem; }
+    .drive-note { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Small-Cox, Big Projects</a>
+  <ul class="nav-links">
+    <li><a href="index.html#channels">Channels</a></li>
+    <li><a href="index.html#big-projects">Big Projects</a></li>
+    <li><a href="index.html#lakehouse">Lake House</a></li>
+    <li><a href="index.html#about">About</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="about">
+  <div class="breadcrumb-nav">
+    <a href="index.html">Home</a> › <a href="index.html#big-projects">Big Projects</a> › The Rental
+  </div>
+  <div class="hero-tape">Big Projects — Chapter 01</div>
+  <h1 class="fade-in">The <span>Rental.</span></h1>
+  <p class="hero-sub fade-in-2">From shaggy blue carpet to brand-new-everything. 🏚️🔨✨</p>
+  <div class="hero-meta-pills fade-in-3">
+    <span class="meta-pill">Built <span>1925</span></span>
+    <span class="meta-pill">Purchased <span>2020</span></span>
+    <span class="meta-pill">Cincinnati, <span>Ohio</span></span>
+    <span class="meta-pill">Status <span>✅ Complete</span></span>
+  </div>
+  <svg class="hero-wave" viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,0 C360,60 1080,60 1440,0 L1440,60 L0,60 Z" fill="#FAF4E8"/>
+  </svg>
+</div>
+
+<!-- ORIGIN STORY -->
+<section class="origin fade-in-3">
+  <div class="section-label">The Story</div>
+  <blockquote>
+    "Built in 1925, this rugged <em>time machine</em> with shaggy-blue carpet<br>and smoke-stained walls needed more than a fresh coat of paint."
+  </blockquote>
+  <p>In 2020, we purchased The Rental from our older neighbor turned friend. We gave this home the same love it gave to many families before us — foundational repairs, replacing walls, and a brand-new-everything gave us our rapid-start into real estate.</p>
+</section>
+
+<!-- GALLERY -->
+<div class="gallery-wrap">
+  <div class="gallery-section-header">
+    <h2>The Full Journey</h2>
+    <p>before / during / after</p>
+  </div>
+
+  <!-- TABS -->
+  <div class="phase-tabs">
+    <button class="phase-tab active" data-phase="before" onclick="switchPhase('before')">
+      🏚️ Before
+      <span class="tab-sub">The time machine</span>
+    </button>
+    <button class="phase-tab" data-phase="during" onclick="switchPhase('during')">
+      🔨 During
+      <span class="tab-sub">Controlled chaos</span>
+    </button>
+    <button class="phase-tab" data-phase="after" onclick="switchPhase('after')">
+      ✨ After
+      <span class="tab-sub">Brand new everything</span>
+    </button>
+  </div>
+
+  <!-- BEFORE -->
+  <div class="gallery-panel active" id="panel-before">
+    <div class="phase-intro">
+      <div class="pi-icon">🏚️</div>
+      <p><strong>The time machine.</strong> Shaggy blue carpet. Smoke-stained walls. A 1925 build that hadn't had a deep refresh in decades. This is what we said yes to — and we'd do it again.</p>
+    </div>
+    <div class="photo-grid" id="grid-before">
+      <!-- Photos injected by JS or use placeholders below -->
+      <div class="photo-card before">
+        <div class="photo-placeholder"><span>📷</span><span class="ph-label">Add photo</span></div>
+        <div class="card-body">
+          <span class="phase-badge">Before</span>
+          <h4>Living Room</h4>
+          <p>The infamous shaggy blue carpet in its full glory.</p>
+        </div>
+      </div>
+      <div class="photo-card before">
+        <div class="photo-placeholder"><span>📷</span><span class="ph-label">Add photo</span></div>
+        <div class="card-body">
+          <span class="phase-badge">Before</span>
+          <h4>Kitchen</h4>
+          <p>Original everything. Decades of character (and grease).</p>
+        </div>
+      </div>
+      <div class="photo-card before">
+        <div class="photo-placeholder"><span>📷</span><span class="ph-label">Add photo</span></div>
+        <div class="card-body">
+          <span class="phase-badge">Before</span>
+          <h4>Walls & Ceilings</h4>
+          <p>Smoke stains that told a thousand stories.</p>
+        </div>
+      </div>
+      <div class="photo-card before">
+        <div class="photo-placeholder"><span>📷</span><span class="ph-label">Add photo</span></div>
+        <div class="card-body">
+          <span class="phase-badge">Before</span>
+          <h4>Exterior</h4>
+          <p>A 1925 original — foundation and all.</p>
+        </div>
+      </div>
+    </div>
+    <div class="drive-note">
+      <p>📁 Photos live in Google Drive → <strong>Rehab / Before</strong>.<br>Copy to S3 and replace placeholder cards with <code>&lt;img&gt;</code> tags.</p>
+      <a class="btn-drive" href="https://drive.google.com/drive/folders/17dDaaiZ_2Nm2hHF7G3RGyDm_U9ZXR4Pi" target="_blank">Open Drive Folder</a>
+    </div>
+  </div>
+
+  <!-- DURING -->
+  <div class="gallery-panel" id="panel-during">
+    <div class="phase-intro">
+      <div class="pi-icon">🔨</div>
+      <p><strong>Controlled chaos.</strong> Foundational repairs, walls coming down, and the satisfying destruction before the build-back. This is where the house stopped being a relic and started becoming a home again.</p>
+    </div>
+    <div class="photo-grid" id="grid-during">
+      <div class="photo-card during">
+        <div class="photo-placeholder"><span>📷</span><span class="ph-label">Add photo</span></div>
+        <div class="card-body">
+          <span class="phase-badge">During</span>
+          <h4>Demo Day</h4>
+          <p>Out with the old. The carpet went first.</p>
+        </div>
+      </div>
+      <div class="photo-card during">
+        <div class="photo-placeholder"><span>📷</span><span class="ph-label">Add photo</span></div>
+        <div class="card-body">
+          <span class="phase-badge">During</span>
+          <h4>Foundational Work</h4>
+          <p>The unglamorous stuff that makes everything else possible.</p>
+        </div>
+      </div>
+      <div class="photo-card during">
+        <div class="photo-placeholder"><span>📷</span><span class="ph-label">Add photo</span></div>
+        <div class="card-body">
+          <span class="phase-badge">During</span>
+          <h4>New Walls</h4>
+          <p>Replacing walls — the blank canvas phase.</p>
+        </div>
+      </div>
+      <div class="photo-card during">
+        <div class="photo-placeholder"><span>📷</span><span class="ph-label">Add photo</span></div>
+        <div class="card-body">
+          <span class="phase-badge">During</span>
+          <h4>Progress Shots</h4>
+          <p>Somewhere between disaster and done.</p>
+        </div>
+      </div>
+    </div>
+    <div class="drive-note">
+      <p>📁 Photos live in Google Drive → <strong>Rehab / During</strong>.<br>Copy to S3 and replace placeholder cards with <code>&lt;img&gt;</code> tags.</p>
+      <a class="btn-drive" href="https://drive.google.com/drive/folders/17dDaaiZ_2Nm2hHF7G3RGyDm_U9ZXR4Pi" target="_blank">Open Drive Folder</a>
+    </div>
+  </div>
+
+  <!-- AFTER -->
+  <div class="gallery-panel" id="panel-after">
+    <div class="phase-intro">
+      <div class="pi-icon">✨</div>
+      <p><strong>Brand new everything.</strong> A complete transformation that honored the bones of a 1925 home while making it livable, lovable, and rentable. Our rapid-start into real estate.</p>
+    </div>
+    <div class="photo-grid" id="grid-after">
+      <div class="photo-card after">
+        <div class="photo-placeholder"><span>📷</span><span class="ph-label">Add photo</span></div>
+        <div class="card-body">
+          <span class="phase-badge">After</span>
+          <h4>Living Room</h4>
+          <p>No blue carpet. Just clean floors and fresh walls.</p>
+        </div>
+      </div>
+      <div class="photo-card after">
+        <div class="photo-placeholder"><span>📷</span><span class="ph-label">Add photo</span></div>
+        <div class="card-body">
+          <span class="phase-badge">After</span>
+          <h4>Kitchen</h4>
+          <p>Brand new everything. Mallory approved.</p>
+        </div>
+      </div>
+      <div class="photo-card after">
+        <div class="photo-placeholder"><span>📷</span><span class="ph-label">Add photo</span></div>
+        <div class="card-body">
+          <span class="phase-badge">After</span>
+          <h4>Exterior</h4>
+          <p>Curb appeal restored. 1925 structure, 2020 finish.</p>
+        </div>
+      </div>
+      <div class="photo-card after">
+        <div class="photo-placeholder"><span>📷</span><span class="ph-label">Add photo</span></div>
+        <div class="card-body">
+          <span class="phase-badge">After</span>
+          <h4>The Full Reveal</h4>
+          <p>From time machine to turnkey rental.</p>
+        </div>
+      </div>
+    </div>
+    <div class="drive-note">
+      <p>📁 Photos live in Google Drive → <strong>Rehab / After</strong>.<br>Copy to S3 and replace placeholder cards with <code>&lt;img&gt;</code> tags.</p>
+      <a class="btn-drive" href="https://drive.google.com/drive/folders/17dDaaiZ_2Nm2hHF7G3RGyDm_U9ZXR4Pi" target="_blank">Open Drive Folder</a>
+    </div>
+  </div>
+
+</div><!-- /gallery-wrap -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Small-Cox, Big Projects</div>
+  <p>The Rental — Chapter 01 of the Big Projects series.</p>
+  <p style="margin-top:.8rem;">© 2025 Tyler & Mallory &bull; Made with love, sawdust, and PLA filament.</p>
+</footer>
+
+<script>
+  function switchPhase(phase) {
+    document.querySelectorAll('.phase-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.gallery-panel').forEach(p => p.classList.remove('active'));
+    document.querySelector('[data-phase="' + phase + '"]').classList.add('active');
+    document.getElementById('panel-' + phase).classList.add('active');
+  }
+</script>
+
+</body>
+</html>
