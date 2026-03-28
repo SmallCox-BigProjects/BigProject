@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -6,498 +7,547 @@
 <title>Small-Cox, Big Projects</title>
 <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Nunito:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
-    --cream:    #FAF4E8;
-    --tan:      #E8D9B8;
-    --rust:     #C45C2A;
-    --rust-lt:  #E87B48;
-    --forest:   #3A5E42;
-    --forest-lt:#5A8C63;
-    --navy:     #243556;
-    --gold:     #D4960A;
-    --gold-lt:  #F2B830;
-    --brown:    #6B3F1F;
-    --ink:      #1E1810;
-    --muted:    #7A6A54;
-    --card-bg:  #FFFDF6;
-    --serif:    'Abril Fatface', serif;
-    --sans:     'Nunito', sans-serif;
-  }
+:root {
+–cream: #FAF4E8;
+–tan: #E8D9B8;
+–rust: #C45C2A;
+–rust-lt: #E87B48;
+–forest: #3A5E42;
+–forest-lt:#5A8C63;
+–navy: #243556;
+–gold: #D4960A;
+–gold-lt: #F2B830;
+–brown: #6B3F1F;
+–ink: #1E1810;
+–muted: #7A6A54;
+–card-bg: #FFFDF6;
+–serif: ‘Abril Fatface’, serif;
+–sans: ‘Nunito’, sans-serif;
+}
 
-  body {
-    background-color: var(--cream);
-    font-family: var(--sans);
-    color: var(--ink);
-    overflow-x: hidden;
-  }
+body {
+background-color: var(–cream);
+font-family: var(–sans);
+color: var(–ink);
+overflow-x: hidden;
+}
 
-  /* ── TEXTURE OVERLAY ── */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      repeating-linear-gradient(0deg,   transparent, transparent 2px, rgba(139,110,60,.03) 2px, rgba(139,110,60,.03) 3px),
-      repeating-linear-gradient(90deg,  transparent, transparent 2px, rgba(139,110,60,.02) 2px, rgba(139,110,60,.02) 3px);
-    pointer-events: none;
-    z-index: 0;
-  }
+/* ── TEXTURE OVERLAY ── */
+body::before {
+content: ‘’;
+position: fixed;
+inset: 0;
+background-image:
+repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(139,110,60,.03) 2px, rgba(139,110,60,.03) 3px),
+repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(139,110,60,.02) 2px, rgba(139,110,60,.02) 3px);
+pointer-events: none;
+z-index: 0;
+}
 
-  /* ── NAV ── */
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: var(--navy);
-    padding: 0 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 54px;
-    border-bottom: 3px solid var(--gold);
-  }
-  .nav-logo {
-    font-family: var(--serif);
-    font-size: 1.15rem;
-    color: var(--gold-lt);
-    letter-spacing: .5px;
-    text-decoration: none;
-  }
-  .nav-links {
-    display: flex;
-    gap: 1.5rem;
-    list-style: none;
-  }
-  .nav-links a {
-    font-size: .8rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-    color: var(--tan);
-    text-decoration: none;
-    transition: color .2s;
-  }
-  .nav-links a:hover { color: var(--gold-lt); }
+/* ── NAV ── */
+nav {
+position: sticky;
+top: 0;
+z-index: 100;
+background: var(–navy);
+padding: 0 2rem;
+display: flex;
+align-items: center;
+justify-content: space-between;
+height: 54px;
+border-bottom: 3px solid var(–gold);
+}
 
-  /* ── HERO BANNER ── */
-  .hero {
-    position: relative;
-    z-index: 1;
-    background: var(--navy);
-    padding: 3.5rem 2rem 0;
-    text-align: center;
-    overflow: hidden;
-  }
-  .hero-tape {
-    display: inline-block;
-    background: var(--gold);
-    color: var(--navy);
-    font-family: var(--sans);
-    font-weight: 700;
-    font-size: .72rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    padding: 5px 18px;
-    border-radius: 3px;
-    margin-bottom: 1.1rem;
-  }
-  .hero h1 {
-    font-family: var(--serif);
-    font-size: clamp(2.6rem, 8vw, 5.2rem);
-    line-height: 1.0;
-    color: #FFFDF6;
-    margin-bottom: .6rem;
-    letter-spacing: .5px;
-  }
-  .hero h1 span { color: var(--gold-lt); }
-  .hero-sub {
-    font-size: 1.05rem;
-    color: var(--tan);
-    font-style: italic;
-    font-weight: 600;
-    margin-bottom: 2.8rem;
-  }
+.nav-logo {
+font-family: var(–serif);
+font-size: 1.15rem;
+color: var(–gold-lt);
+letter-spacing: .5px;
+text-decoration: none;
+}
 
-  /* Wavy SVG divider between hero and body */
-  .hero-wave {
-    display: block;
-    width: 100%;
-    margin-bottom: -2px;
-    line-height: 0;
-  }
+.nav-links {
+display: flex;
+gap: 1.5rem;
+list-style: none;
+}
 
-  /* ── MEET SECTION ── */
-  .meet {
-    position: relative;
-    z-index: 1;
-    background: var(--cream);
-    padding: 4rem 1.5rem 3rem;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-  .section-label {
-    display: inline-block;
-    font-family: var(--serif);
-    font-size: .85rem;
-    background: var(--rust);
-    color: #fff;
-    padding: 4px 14px;
-    border-radius: 3px;
-    letter-spacing: .5px;
-    margin-bottom: 1.6rem;
-  }
-  .duo-cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-  }
-  @media (max-width: 560px) { .duo-cards { grid-template-columns: 1fr; } }
+.nav-links a {
+font-size: .8rem;
+font-weight: 700;
+text-transform: uppercase;
+letter-spacing: 1.2px;
+color: var(–tan);
+text-decoration: none;
+transition: color .2s;
+}
 
-  .person-card {
-    background: var(--card-bg);
-    border: 2px solid var(--tan);
-    border-radius: 12px;
-    padding: 1.8rem 1.5rem 1.5rem;
-    position: relative;
-    transition: transform .25s, box-shadow .25s;
-    cursor: default;
-  }
-  .person-card:hover {
-    transform: rotate(0deg) translateY(-4px);
-    box-shadow: 6px 8px 0 var(--tan);
-  }
-  .person-card:first-child { transform: rotate(-1.2deg); }
-  .person-card:last-child  { transform: rotate(1deg); }
-  .person-card:first-child:hover { transform: rotate(-1.2deg) translateY(-4px); }
-  .person-card:last-child:hover  { transform: rotate(1deg)   translateY(-4px); }
+.nav-links a:hover { color: var(–gold-lt); }
 
-  .person-badge {
-    position: absolute;
-    top: -14px; left: 18px;
-    background: var(--navy);
-    color: var(--gold-lt);
-    font-family: var(--serif);
-    font-size: .8rem;
-    padding: 3px 12px;
-    border-radius: 20px;
-    letter-spacing: .5px;
-  }
-  .person-card h2 {
-    font-family: var(--serif);
-    font-size: 2rem;
-    color: var(--navy);
-    margin: .5rem 0 .5rem;
-    line-height: 1;
-  }
-  .person-card .role-tag {
-    display: inline-block;
-    background: var(--tan);
-    color: var(--brown);
-    font-size: .72rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 3px 10px;
-    border-radius: 3px;
-    margin-bottom: .9rem;
-  }
-  .person-card p {
-    font-size: .92rem;
-    line-height: 1.65;
-    color: var(--muted);
-  }
-  .person-card .emojis {
-    margin-top: .9rem;
-    font-size: 1.3rem;
-    letter-spacing: 4px;
-  }
+/* ── HERO BANNER ── */
+.hero {
+position: relative;
+z-index: 1;
+background: var(–navy);
+padding: 3.5rem 2rem 0;
+text-align: center;
+overflow: hidden;
+}
 
-  /* ── CONNECTOR ── */
-  .connector {
-    text-align: center;
-    padding: 1rem 0;
-    font-family: var(--serif);
-    font-size: 2rem;
-    color: var(--rust);
-    position: relative;
-    z-index: 1;
-  }
+.hero-tape {
+display: inline-block;
+background: var(–gold);
+color: var(–navy);
+font-family: var(–sans);
+font-weight: 700;
+font-size: .72rem;
+text-transform: uppercase;
+letter-spacing: 2px;
+padding: 5px 18px;
+border-radius: 3px;
+margin-bottom: 1.1rem;
+}
 
-  /* ── INTRO BLURB ── */
-  .intro-blurb {
-    position: relative;
-    z-index: 1;
-    background: var(--forest);
-    color: var(--cream);
-    padding: 2.8rem 2rem;
-    text-align: center;
-  }
-  .intro-blurb blockquote {
-    font-family: var(--serif);
-    font-size: clamp(1.3rem, 3.5vw, 2rem);
-    line-height: 1.4;
-    max-width: 780px;
-    margin: 0 auto .8rem;
-    color: var(--tan);
-  }
-  .intro-blurb blockquote em {
-    color: var(--gold-lt);
-    font-style: normal;
-  }
-  .intro-blurb p {
-    font-size: .9rem;
-    color: rgba(255,255,255,.65);
-    font-style: italic;
-  }
+.hero h1 {
+font-family: var(–serif);
+font-size: clamp(2.6rem, 8vw, 5.2rem);
+line-height: 1.0;
+color: #FFFDF6;
+margin-bottom: .6rem;
+letter-spacing: .5px;
+}
 
-  /* ── CHANNELS ── */
-  .channels {
-    position: relative;
-    z-index: 1;
-    padding: 4rem 1.5rem 3rem;
-    max-width: 960px;
-    margin: 0 auto;
-  }
-  .channels-header {
-    display: flex;
-    align-items: baseline;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
-  }
-  .channels-header h2 {
-    font-family: var(--serif);
-    font-size: 2.2rem;
-    color: var(--navy);
-  }
-  .channels-header p {
-    font-size: .9rem;
-    color: var(--muted);
-    font-style: italic;
-  }
+.hero h1 span { color: var(–gold-lt); }
 
-  .channel-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.4rem;
-  }
-  @media (max-width: 680px) { .channel-grid { grid-template-columns: 1fr; } }
+.hero-sub {
+font-size: 1.05rem;
+color: var(–tan);
+font-style: italic;
+font-weight: 600;
+margin-bottom: 2.8rem;
+}
 
-  .channel-card {
-    background: var(--card-bg);
-    border: 2px solid var(--tan);
-    border-radius: 14px;
-    overflow: hidden;
-    transition: transform .2s, box-shadow .2s;
-  }
-  .channel-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 5px 7px 0 var(--tan);
-  }
-  .channel-header {
-    padding: 1.4rem 1.3rem 1rem;
-    border-bottom: 2px dashed var(--tan);
-  }
-  .channel-icon {
-    font-size: 2rem;
-    margin-bottom: .6rem;
-    display: block;
-  }
-  .channel-card h3 {
-    font-family: var(--serif);
-    font-size: 1.4rem;
-    color: var(--navy);
-    line-height: 1.1;
-    margin-bottom: .3rem;
-  }
-  .channel-tag {
-    display: inline-block;
-    font-size: .68rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-    padding: 2px 9px;
-    border-radius: 3px;
-  }
-  .tag-rust   { background: rgba(196,92,42,.15); color: var(--rust); }
-  .tag-forest { background: rgba(58,94,66,.15);  color: var(--forest); }
-  .tag-navy   { background: rgba(36,53,86,.12);  color: var(--navy); }
+/* Wavy SVG divider between hero and body */
+.hero-wave {
+display: block;
+width: 100%;
+margin-bottom: -2px;
+line-height: 0;
+}
 
-  .channel-body {
-    padding: 1rem 1.3rem 1.3rem;
-  }
-  .channel-body p {
-    font-size: .88rem;
-    line-height: 1.6;
-    color: var(--muted);
-    margin-bottom: .9rem;
-  }
-  .channel-cta {
-    display: inline-block;
-    font-size: .78rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--rust);
-    text-decoration: none;
-    border-bottom: 2px solid var(--rust-lt);
-    padding-bottom: 1px;
-    transition: color .2s, border-color .2s;
-  }
-  .channel-cta:hover { color: var(--brown); border-color: var(--brown); }
+/* ── MEET SECTION ── */
+.meet {
+position: relative;
+z-index: 1;
+background: var(–cream);
+padding: 4rem 1.5rem 3rem;
+max-width: 900px;
+margin: 0 auto;
+}
 
-  /* ── BIG PROJECT SPOTLIGHT ── */
-  .spotlight {
-    position: relative;
-    z-index: 1;
-    background: var(--rust);
-    padding: 3rem 2rem;
-    overflow: hidden;
-  }
-  .spotlight::before {
-    content: 'THE LAKE HOUSE';
-    position: absolute;
-    font-family: var(--serif);
-    font-size: clamp(4rem, 12vw, 9rem);
-    color: rgba(255,255,255,.06);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    white-space: nowrap;
-    pointer-events: none;
-    letter-spacing: 4px;
-  }
-  .spotlight-inner {
-    max-width: 860px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    align-items: start;
-  }
-  @media (max-width: 620px) { .spotlight-inner { grid-template-columns: 1fr; } }
+.section-label {
+display: inline-block;
+font-family: var(–serif);
+font-size: .85rem;
+background: var(–rust);
+color: #fff;
+padding: 4px 14px;
+border-radius: 3px;
+letter-spacing: .5px;
+margin-bottom: 1.6rem;
+}
 
-  .spotlight-left {}
-  .spotlight-eyebrow {
-    font-size: .72rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--gold-lt);
-    margin-bottom: .6rem;
-  }
-  .spotlight h2 {
-    font-family: var(--serif);
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
-    color: #FFFDF6;
-    line-height: 1.1;
-    margin-bottom: .9rem;
-  }
-  .spotlight-desc {
-    font-size: .93rem;
-    line-height: 1.7;
-    color: rgba(255,253,246,.8);
-    margin-bottom: 1.2rem;
-  }
-  .spotlight-btn {
-    display: inline-block;
-    background: var(--gold);
-    color: var(--navy);
-    font-size: .8rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-    padding: .6rem 1.4rem;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: background .2s;
-  }
-  .spotlight-btn:hover { background: var(--gold-lt); }
+.duo-cards {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 1.5rem;
+}
 
-  .cast-list {
-    background: rgba(0,0,0,.18);
-    border-radius: 10px;
-    padding: 1.3rem 1.4rem;
-  }
-  .cast-list h4 {
-    font-family: var(--serif);
-    font-size: 1.1rem;
-    color: var(--gold-lt);
-    margin-bottom: 1rem;
-  }
-  .cast-member {
-    display: flex;
-    align-items: flex-start;
-    gap: .7rem;
-    margin-bottom: .75rem;
-  }
-  .cast-avatar {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: rgba(255,255,255,.15);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: .75rem;
-    font-weight: 700;
-    color: var(--gold-lt);
-    flex-shrink: 0;
-    letter-spacing: -.5px;
-  }
-  .cast-info p { font-size: .8rem; font-weight: 700; color: #FFFDF6; line-height: 1.2; }
-  .cast-info span { font-size: .75rem; color: rgba(255,253,246,.6); font-style: italic; }
+@media (max-width: 560px) { .duo-cards { grid-template-columns: 1fr; } }
 
-  /* ── FOOTER ── */
-  footer {
-    position: relative;
-    z-index: 1;
-    background: var(--navy);
-    color: var(--tan);
-    text-align: center;
-    padding: 2rem;
-    font-size: .82rem;
-    border-top: 3px solid var(--gold);
-  }
-  footer .footer-logo {
-    font-family: var(--serif);
-    font-size: 1.5rem;
-    color: var(--gold-lt);
-    margin-bottom: .4rem;
-  }
-  footer p { color: rgba(232,217,184,.55); margin-top: .3rem; }
+.person-card {
+background: var(–card-bg);
+border: 2px solid var(–tan);
+border-radius: 12px;
+padding: 1.8rem 1.5rem 1.5rem;
+position: relative;
+transition: transform .25s, box-shadow .25s;
+cursor: default;
+}
 
-  /* ── STAMP DECOR ── */
-  .stamp {
-    display: inline-block;
-    border: 3px solid currentColor;
-    border-radius: 6px;
-    padding: 2px 8px;
-    font-size: .65rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    transform: rotate(-5deg);
-    opacity: .7;
-    margin-left: .6rem;
-    vertical-align: middle;
-  }
+.person-card:hover {
+transform: rotate(0deg) translateY(-4px);
+box-shadow: 6px 8px 0 var(–tan);
+}
 
-  /* ── SCROLL FADE ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(22px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .fade-in { animation: fadeUp .7s ease both; }
-  .fade-in-2 { animation: fadeUp .7s .15s ease both; }
-  .fade-in-3 { animation: fadeUp .7s .3s ease both; }
+.person-card:first-child { transform: rotate(-1.2deg); }
+.person-card:last-child { transform: rotate(1deg); }
+.person-card:first-child:hover { transform: rotate(-1.2deg) translateY(-4px); }
+.person-card:last-child:hover { transform: rotate(1deg) translateY(-4px); }
+
+.person-badge {
+position: absolute;
+top: -14px; left: 18px;
+background: var(–navy);
+color: var(–gold-lt);
+font-family: var(–serif);
+font-size: .8rem;
+padding: 3px 12px;
+border-radius: 20px;
+letter-spacing: .5px;
+}
+
+.person-card h2 {
+font-family: var(–serif);
+font-size: 2rem;
+color: var(–navy);
+margin: .5rem 0 .5rem;
+line-height: 1;
+}
+
+.person-card .role-tag {
+display: inline-block;
+background: var(–tan);
+color: var(–brown);
+font-size: .72rem;
+font-weight: 700;
+text-transform: uppercase;
+letter-spacing: 1px;
+padding: 3px 10px;
+border-radius: 3px;
+margin-bottom: .9rem;
+}
+
+.person-card p {
+font-size: .92rem;
+line-height: 1.65;
+color: var(–muted);
+}
+
+.person-card .emojis {
+margin-top: .9rem;
+font-size: 1.3rem;
+letter-spacing: 4px;
+}
+
+/* ── CONNECTOR ── */
+.connector {
+text-align: center;
+padding: 1rem 0;
+font-family: var(–serif);
+font-size: 2rem;
+color: var(–rust);
+position: relative;
+z-index: 1;
+}
+
+/* ── INTRO BLURB ── */
+.intro-blurb {
+position: relative;
+z-index: 1;
+background: var(–forest);
+color: var(–cream);
+padding: 2.8rem 2rem;
+text-align: center;
+}
+
+.intro-blurb blockquote {
+font-family: var(–serif);
+font-size: clamp(1.3rem, 3.5vw, 2rem);
+line-height: 1.4;
+max-width: 780px;
+margin: 0 auto .8rem;
+color: var(–tan);
+}
+
+.intro-blurb blockquote em {
+color: var(–gold-lt);
+font-style: normal;
+}
+
+.intro-blurb p {
+font-size: .9rem;
+color: rgba(255,255,255,.65);
+font-style: italic;
+}
+
+/* ── CHANNELS ── */
+.channels {
+position: relative;
+z-index: 1;
+padding: 4rem 1.5rem 3rem;
+max-width: 960px;
+margin: 0 auto;
+}
+
+.channels-header {
+display: flex;
+align-items: baseline;
+gap: 1rem;
+margin-bottom: 2rem;
+flex-wrap: wrap;
+}
+
+.channels-header h2 {
+font-family: var(–serif);
+font-size: 2.2rem;
+color: var(–navy);
+}
+
+.channels-header p {
+font-size: .9rem;
+color: var(–muted);
+font-style: italic;
+}
+
+.channel-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 1.4rem;
+}
+
+@media (max-width: 680px) { .channel-grid { grid-template-columns: 1fr; } }
+
+.channel-card {
+background: var(–card-bg);
+border: 2px solid var(–tan);
+border-radius: 14px;
+overflow: hidden;
+transition: transform .2s, box-shadow .2s;
+}
+
+.channel-card:hover {
+transform: translateY(-5px);
+box-shadow: 5px 7px 0 var(–tan);
+}
+
+.channel-header {
+padding: 1.4rem 1.3rem 1rem;
+border-bottom: 2px dashed var(–tan);
+}
+
+.channel-icon {
+font-size: 2rem;
+margin-bottom: .6rem;
+display: block;
+}
+
+.channel-card h3 {
+font-family: var(–serif);
+font-size: 1.4rem;
+color: var(–navy);
+line-height: 1.1;
+margin-bottom: .3rem;
+}
+
+.channel-tag {
+display: inline-block;
+font-size: .68rem;
+font-weight: 700;
+text-transform: uppercase;
+letter-spacing: 1.2px;
+padding: 2px 9px;
+border-radius: 3px;
+}
+
+.tag-rust { background: rgba(196,92,42,.15); color: var(–rust); }
+.tag-forest { background: rgba(58,94,66,.15); color: var(–forest); }
+.tag-navy { background: rgba(36,53,86,.12); color: var(–navy); }
+.tag-gold { background: rgba(212,150,10,.15); color: var(–gold); }
+
+.channel-body {
+padding: 1rem 1.3rem 1.3rem;
+}
+
+.channel-body p {
+font-size: .88rem;
+line-height: 1.6;
+color: var(–muted);
+margin-bottom: .9rem;
+}
+
+.channel-cta {
+display: inline-block;
+font-size: .78rem;
+font-weight: 700;
+text-transform: uppercase;
+letter-spacing: 1px;
+color: var(–rust);
+text-decoration: none;
+border-bottom: 2px solid var(–rust-lt);
+padding-bottom: 1px;
+transition: color .2s, border-color .2s;
+}
+
+.channel-cta:hover { color: var(–brown); border-color: var(–brown); }
+
+/* ── BIG PROJECT SPOTLIGHT ── */
+.spotlight {
+position: relative;
+z-index: 1;
+background: var(–rust);
+padding: 3rem 2rem;
+overflow: hidden;
+}
+
+.spotlight::before {
+content: ‘THE LAKE HOUSE’;
+position: absolute;
+font-family: var(–serif);
+font-size: clamp(4rem, 12vw, 9rem);
+color: rgba(255,255,255,.06);
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+white-space: nowrap;
+pointer-events: none;
+letter-spacing: 4px;
+}
+
+.spotlight-inner {
+max-width: 860px;
+margin: 0 auto;
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 2rem;
+align-items: start;
+}
+
+@media (max-width: 620px) { .spotlight-inner { grid-template-columns: 1fr; } }
+
+.spotlight-eyebrow {
+font-size: .72rem;
+font-weight: 700;
+text-transform: uppercase;
+letter-spacing: 2px;
+color: var(–gold-lt);
+margin-bottom: .6rem;
+}
+
+.spotlight h2 {
+font-family: var(–serif);
+font-size: clamp(1.8rem, 4vw, 2.8rem);
+color: #FFFDF6;
+line-height: 1.1;
+margin-bottom: .9rem;
+}
+
+.spotlight-desc {
+font-size: .93rem;
+line-height: 1.7;
+color: rgba(255,253,246,.8);
+margin-bottom: 1.2rem;
+}
+
+.spotlight-btn {
+display: inline-block;
+background: var(–gold);
+color: var(–navy);
+font-size: .8rem;
+font-weight: 700;
+text-transform: uppercase;
+letter-spacing: 1.2px;
+padding: .6rem 1.4rem;
+border-radius: 4px;
+text-decoration: none;
+transition: background .2s;
+}
+
+.spotlight-btn:hover { background: var(–gold-lt); }
+
+.cast-list {
+background: rgba(0,0,0,.18);
+border-radius: 10px;
+padding: 1.3rem 1.4rem;
+}
+
+.cast-list h4 {
+font-family: var(–serif);
+font-size: 1.1rem;
+color: var(–gold-lt);
+margin-bottom: 1rem;
+}
+
+.cast-member {
+display: flex;
+align-items: flex-start;
+gap: .7rem;
+margin-bottom: .75rem;
+}
+
+.cast-avatar {
+width: 32px;
+height: 32px;
+border-radius: 50%;
+background: rgba(255,255,255,.15);
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: .75rem;
+font-weight: 700;
+color: var(–gold-lt);
+flex-shrink: 0;
+letter-spacing: -.5px;
+}
+
+.cast-info p { font-size: .8rem; font-weight: 700; color: #FFFDF6; line-height: 1.2; }
+.cast-info span { font-size: .75rem; color: rgba(255,253,246,.6); font-style: italic; }
+
+/* ── FOOTER ── */
+footer {
+position: relative;
+z-index: 1;
+background: var(–navy);
+color: var(–tan);
+text-align: center;
+padding: 2rem;
+font-size: .82rem;
+border-top: 3px solid var(–gold);
+}
+
+footer .footer-logo {
+font-family: var(–serif);
+font-size: 1.5rem;
+color: var(–gold-lt);
+margin-bottom: .4rem;
+}
+
+footer p { color: rgba(232,217,184,.55); margin-top: .3rem; }
+
+/* ── STAMP DECOR ── */
+.stamp {
+display: inline-block;
+border: 3px solid currentColor;
+border-radius: 6px;
+padding: 2px 8px;
+font-size: .65rem;
+font-weight: 700;
+text-transform: uppercase;
+letter-spacing: 1.5px;
+transform: rotate(-5deg);
+opacity: .7;
+margin-left: .6rem;
+vertical-align: middle;
+}
+
+/* ── SCROLL FADE ── */
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(22px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in { animation: fadeUp .7s ease both; }
+.fade-in-2 { animation: fadeUp .7s .15s ease both; }
+.fade-in-3 { animation: fadeUp .7s .3s ease both; }
 </style>
+
 </head>
 <body>
 
 <!-- NAV -->
+
 <nav>
   <a href="#" class="nav-logo">Small-Cox, Big Projects</a>
   <ul class="nav-links">
@@ -505,10 +555,12 @@
     <li><a href="#big-projects">Big Projects</a></li>
     <li><a href="#lakehouse">Lake House</a></li>
     <li><a href="#about">About</a></li>
+    <li><a href="big-trips.html">Big Trips</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
+
 <div class="hero" id="about">
   <div class="hero-tape">Est. 2019 &bull; Cincinnati, Ohio</div>
   <h1 class="fade-in">Small-Cox,<br><span>Big Projects.</span></h1>
@@ -519,10 +571,10 @@
 </div>
 
 <!-- MEET TYLER & MALLORY -->
+
 <section class="meet fade-in-3">
   <div class="section-label">👋 Meet Team Small-Cox</div>
   <div class="duo-cards">
-
     <div class="person-card">
       <span class="person-badge">The Visionary</span>
       <h2>Tyler</h2>
@@ -530,7 +582,6 @@
       <p>If there's a power tool involved, a harebrained idea to be sketched on a napkin, or a 3D print that takes 14 hours and probably should have been bought at Target — that's Tyler's domain. Somehow it all comes together.</p>
       <div class="emojis">🛠️ 🖨️ 🤔</div>
     </div>
-
     <div class="person-card">
       <span class="person-badge">The Realist</span>
       <h2>Mallory</h2>
@@ -538,14 +589,12 @@
       <p>Keeps the projects from going off the rails — most of the time. Brings warmth, aesthetic vision, and a healthy skepticism to every undertaking. Also the one who knows where the measuring tape is.</p>
       <div class="emojis">📐 🎨 🙄</div>
     </div>
-
   </div>
-
   <div class="connector">+ ∞ ideas</div>
-
 </section>
 
 <!-- INTRO BLURB -->
+
 <div class="intro-blurb">
   <blockquote>
     "We bought a lake house. We have <em>opinions</em> about grout. Our family is <em>absolutely feral.</em> Come watch."
@@ -554,123 +603,138 @@
 </div>
 
 <!-- CHANNELS -->
+
 <section class="channels" id="channels">
   <div class="channels-header">
     <h2>The Channels</h2>
     <p>something for everyone (probably)</p>
   </div>
-
   <div class="channel-grid">
 
-    <!-- Big Projects -->
-    <div class="channel-card">
-      <div class="channel-header">
-        <span class="channel-icon">🏠</span>
-        <h3>Big Projects</h3>
-        <span class="channel-tag tag-rust">Flagship</span>
-      </div>
-      <div class="channel-body">
-        <p>Full-scale renovations, flips, and builds. Right now: a lake house, two wildly opinionated families, and way too much demo footage. Buckle up.</p>
-        <a href="#lakehouse" class="channel-cta">Follow the flip →</a>
-      </div>
-    </div>
+```
+<!-- Big Projects -->
+<div class="channel-card">
+  <div class="channel-header">
+    <span class="channel-icon">🏠</span>
+    <h3>Big Projects</h3>
+    <span class="channel-tag tag-rust">Flagship</span>
+  </div>
+  <div class="channel-body">
+    <p>Full-scale renovations, flips, and builds. Right now: a lake house, two wildly opinionated families, and way too much demo footage. Buckle up.</p>
+    <a href="#lakehouse" class="channel-cta">Follow the flip →</a>
+  </div>
+</div>
 
-    <!-- Lil Projects -->
-    <div class="channel-card">
-      <div class="channel-header">
-        <span class="channel-icon">🖨️</span>
-        <h3>Lil' Projects</h3>
-        <span class="channel-tag tag-navy">3D Printing</span>
-      </div>
-      <div class="channel-body">
-        <p>Miniature magic from the print bed. Custom parts, random creations, and the occasional object that was just cool to print. Small scale, maximum nerd energy.</p>
-        <a href="project-labs.html" class="channel-cta">See the prints →</a>
-      </div>
-    </div>
+<!-- Lil Projects -->
+<div class="channel-card">
+  <div class="channel-header">
+    <span class="channel-icon">🖨️</span>
+    <h3>Lil' Projects</h3>
+    <span class="channel-tag tag-navy">3D Printing</span>
+  </div>
+  <div class="channel-body">
+    <p>Miniature magic from the print bed. Custom parts, random creations, and the occasional object that was just cool to print. Small scale, maximum nerd energy.</p>
+    <a href="project-labs.html" class="channel-cta">See the prints →</a>
+  </div>
+</div>
 
-    <!-- Guest Stars -->
-    <div class="channel-card">
-      <div class="channel-header">
-        <span class="channel-icon">🌟</span>
-        <h3>Guest Stars</h3>
-        <span class="channel-tag tag-forest">Friends & Fam</span>
-      </div>
-      <div class="channel-body">
-        <p>The extended cast — friends, family, and whoever wandered onto the property — helping (or hindering) the cause. Also: helping others tackle their own projects.</p>
-        <a href="#" class="channel-cta">Meet the cast →</a>
-      </div>
-    </div>
+<!-- Guest Stars -->
+<div class="channel-card">
+  <div class="channel-header">
+    <span class="channel-icon">🌟</span>
+    <h3>Guest Stars</h3>
+    <span class="channel-tag tag-forest">Friends &amp; Fam</span>
+  </div>
+  <div class="channel-body">
+    <p>The extended cast — friends, family, and whoever wandered onto the property — helping (or hindering) the cause. Also: helping others tackle their own projects.</p>
+    <a href="#" class="channel-cta">Meet the cast →</a>
+  </div>
+</div>
+
+<!-- ✈️ Big Trips — NEW -->
+<div class="channel-card">
+  <div class="channel-header">
+    <span class="channel-icon">✈️</span>
+    <h3>Big Trips</h3>
+    <span class="channel-tag tag-gold">Adventures</span>
+  </div>
+  <div class="channel-body">
+    <p>When they're not building something, they're going somewhere. Big vacations, big memories — Alaska, Africa, the open sea, and whatever's next.</p>
+    <a href="big-trips.html" class="channel-cta">See the adventures →</a>
+  </div>
+</div>
+```
 
   </div>
 </section>
 
 <!-- BIG PROJECTS ARCHIVE -->
+
 <section class="channels" id="big-projects" style="padding-top:0;">
   <div class="channels-header" style="margin-top:0; padding-top:2rem; border-top: 2px dashed var(--tan);">
     <h2>Big Projects</h2>
     <p>every flip, every chapter</p>
   </div>
-
   <div class="channel-grid" style="grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));">
 
-    <!-- The Rental -->
-    <div class="channel-card" style="border-color: var(--rust); position:relative;">
-      <div style="position:absolute;top:12px;right:14px;background:rgba(58,94,66,.15);color:var(--forest);font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;padding:2px 9px;border-radius:3px;">✅ Complete</div>
-      <div class="channel-header">
-        <span class="channel-icon">🏚️</span>
-        <h3>The Rental</h3>
-        <span class="channel-tag tag-rust">Chapter 01</span>
-      </div>
-      <div class="channel-body">
-        <p style="font-size:.78rem;color:var(--muted);margin-bottom:.4rem;">Built 1925 &bull; Purchased 2020 &bull; Cincinnati, OH</p>
-        <p>From shaggy blue carpet and smoke-stained walls to a brand-new-everything renovation. Our rapid-start into real estate — and the project that started it all.</p>
-        <a href="the-rental.html" class="channel-cta">See the full transformation →</a>
-      </div>
-    </div>
+```
+<!-- The Rental -->
+<div class="channel-card" style="border-color: var(--rust); position:relative;">
+  <div style="position:absolute;top:12px;right:14px;background:rgba(58,94,66,.15);color:var(--forest);font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;padding:2px 9px;border-radius:3px;">✅ Complete</div>
+  <div class="channel-header">
+    <span class="channel-icon">🏚️</span>
+    <h3>The Rental</h3>
+    <span class="channel-tag tag-rust">Chapter 01</span>
+  </div>
+  <div class="channel-body">
+    <p style="font-size:.78rem;color:var(--muted);margin-bottom:.4rem;">Built 1925 &bull; Purchased 2020 &bull; Cincinnati, OH</p>
+    <p>From shaggy blue carpet and smoke-stained walls to a brand-new-everything renovation. Our rapid-start into real estate — and the project that started it all.</p>
+    <a href="the-rental.html" class="channel-cta">See the full transformation →</a>
+  </div>
+</div>
 
-    <!-- Our Home — coming soon -->
-    <div class="channel-card" style="opacity:.65;">
-      <div class="channel-header">
-        <span class="channel-icon">🏠</span>
-        <h3>Our Home</h3>
-        <span class="channel-tag tag-navy">Chapter 02</span>
-      </div>
-      <div class="channel-body">
-        <p>The one we kept. Details coming soon.</p>
-        <span style="font-size:.78rem;color:var(--muted);font-style:italic;">Coming soon</span>
-      </div>
-    </div>
+<!-- Our Home — coming soon -->
+<div class="channel-card" style="opacity:.65;">
+  <div class="channel-header">
+    <span class="channel-icon">🏠</span>
+    <h3>Our Home</h3>
+    <span class="channel-tag tag-navy">Chapter 02</span>
+  </div>
+  <div class="channel-body">
+    <p>The one we kept. Details coming soon.</p>
+    <span style="font-size:.78rem;color:var(--muted);font-style:italic;">Coming soon</span>
+  </div>
+</div>
 
-    <!-- The Lakehouse — in progress -->
-    <div class="channel-card" style="opacity:.65;">
-      <div class="channel-header">
-        <span class="channel-icon">🌊</span>
-        <h3>The Lakehouse</h3>
-        <span class="channel-tag tag-forest">Chapter 03</span>
-      </div>
-      <div class="channel-body">
-        <p>A canal house, two families, and Jeff. Currently airing.</p>
-        <a href="#lakehouse" class="channel-cta">Follow the build →</a>
-      </div>
-    </div>
+<!-- The Lakehouse — in progress -->
+<div class="channel-card" style="opacity:.65;">
+  <div class="channel-header">
+    <span class="channel-icon">🌊</span>
+    <h3>The Lakehouse</h3>
+    <span class="channel-tag tag-forest">Chapter 03</span>
+  </div>
+  <div class="channel-body">
+    <p>A canal house, two families, and Jeff. Currently airing.</p>
+    <a href="#lakehouse" class="channel-cta">Follow the build →</a>
+  </div>
+</div>
+```
 
   </div>
 </section>
 
 <!-- LAKE HOUSE SPOTLIGHT -->
+
 <section class="spotlight" id="lakehouse">
   <div class="spotlight-inner">
-
     <div class="spotlight-left">
       <p class="spotlight-eyebrow">🌊 Now Airing — Season 1</p>
       <h2>The Lake House Flip</h2>
       <p class="spotlight-desc">We bought a house on a canal. Our neighbors are Mallory's twin sisters, brother-in-law, niece, and nephew. Further down the lake is Jeff — Mallory's dad — who is a legitimate force of nature. This is either a renovation story or a reality show. Maybe both.</p>
       <a href="#" class="spotlight-btn">Follow the Build</a>
     </div>
-
     <div class="cast-list">
       <h4>🎬 Lake House Cast</h4>
-
       <div class="cast-member">
         <div class="cast-avatar">TY</div>
         <div class="cast-info">
@@ -678,7 +742,6 @@
           <span>Contractor-in-denial. Power tool enthusiast.</span>
         </div>
       </div>
-
       <div class="cast-member">
         <div class="cast-avatar">MA</div>
         <div class="cast-info">
@@ -686,7 +749,6 @@
           <span>The taste-maker. The voice of reason.</span>
         </div>
       </div>
-
       <div class="cast-member">
         <div class="cast-avatar">👯</div>
         <div class="cast-info">
@@ -694,7 +756,6 @@
           <span>Neighbors across the canal. Always watching.</span>
         </div>
       </div>
-
       <div class="cast-member">
         <div class="cast-avatar">JE</div>
         <div class="cast-info">
@@ -703,15 +764,15 @@
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
 <!-- FOOTER -->
+
 <footer>
   <div class="footer-logo">Small-Cox, Big Projects</div>
   <p>Two people, one lake house, and a 3D printer that never sleeps.</p>
-  <p style="margin-top:.8rem;">© 2025 Tyler & Mallory &bull; Made with love, sawdust, and PLA filament.</p>
+  <p style="margin-top:.8rem;">© 2025 Tyler &amp; Mallory &bull; Made with love, sawdust, and PLA filament.</p>
 </footer>
 
 </body>
