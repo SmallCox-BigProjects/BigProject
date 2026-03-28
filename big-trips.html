@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Big Trips — Small-Cox, Big Projects</title>
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Nunito:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+```
+:root {
+  --cream:     #FAF4E8;
+  --tan:       #E8D9B8;
+  --rust:      #C45C2A;
+  --rust-lt:   #E87B48;
+  --forest:    #3A5E42;
+  --forest-lt: #5A8C63;
+  --navy:      #243556;
+  --gold:      #D4960A;
+  --gold-lt:   #F2B830;
+  --brown:     #6B3F1F;
+  --ink:       #1E1810;
+  --muted:     #7A6A54;
+  --card-bg:   #FFFDF6;
+  --serif:     'Abril Fatface', serif;
+  --sans:      'Nunito', sans-serif;
+}
+
+body {
+  background-color: var(--cream);
+  font-family: var(--sans);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(139,110,60,.03) 2px, rgba(139,110,60,.03) 3px),
+    repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(139,110,60,.02) 2px, rgba(139,110,60,.02) 3px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--navy);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 54px;
+  border-bottom: 3px solid var(--gold);
+}
+
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  color: var(--gold-lt);
+  letter-spacing: .5px;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: .8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--tan);
+  text-decoration: none;
+  transition: color .2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active { color: var(--gold-lt); }
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  z-index: 1;
+  background: var(--navy);
+  padding: 3.5rem 2rem 0;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-tape {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--navy);
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 5px 18px;
+  border-radius: 3px;
+  margin-bottom: 1.1rem;
+}
+
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(2.6rem, 8vw, 5.2rem);
+  line-height: 1.0;
+  color: #FFFDF6;
+  margin-bottom: .6rem;
+  letter-spacing: .5px;
+}
+
+.hero h1 span { color: var(--gold-lt); }
+
+.hero-sub {
+  font-size: 1.05rem;
+  color: var(--tan);
+  font-style: italic;
+  font-weight: 600;
+  margin-bottom: 2.8rem;
+}
+
+.hero-wave {
+  display: block;
+  width: 100%;
+  margin-bottom: -2px;
+  line-height: 0;
+}
+
+/* ── TRIP JUMP NAV ── */
+.trip-nav {
+  position: relative;
+  z-index: 1;
+  background: var(--tan);
+  border-bottom: 2px dashed var(--gold);
+  padding: .9rem 2rem;
+  display: flex;
+  gap: .8rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.trip-nav a {
+  font-size: .75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.1px;
+  color: var(--navy);
+  text-decoration: none;
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 2px solid transparent;
+  transition: all .2s;
+}
+
+.trip-nav a:hover { border-color: var(--navy); background: rgba(36,53,86,.08); }
+.trip-nav a.now   { background: var(--rust); color: #fff; border-color: var(--rust); }
+
+/* ── MAIN ── */
+main {
+  position: relative;
+  z-index: 1;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem 5rem;
+}
+
+.section-label {
+  display: inline-block;
+  font-family: var(--serif);
+  font-size: .85rem;
+  background: var(--rust);
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  letter-spacing: .5px;
+  margin-bottom: 1.6rem;
+}
+
+/* ── TRIP CARD ── */
+.trip-card {
+  background: var(--card-bg);
+  border: 2px solid var(--tan);
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 2.2rem;
+  transition: box-shadow .25s;
+}
+
+.trip-card:hover { box-shadow: 6px 8px 0 var(--tan); }
+
+.trip-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.6rem 1.8rem 1.2rem;
+  border-bottom: 2px dashed var(--tan);
+}
+
+.trip-icon { font-size: 2.2rem; margin-bottom: .5rem; display: block; }
+
+.trip-card h2 {
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+  color: var(--navy);
+  line-height: 1.1;
+  margin-bottom: .35rem;
+}
+
+.trip-card h2 span { color: var(--rust); }
+
+.trip-meta-row {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  flex-wrap: wrap;
+  margin-top: .3rem;
+}
+
+.trip-tag {
+  display: inline-block;
+  font-size: .68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  padding: 2px 9px;
+  border-radius: 3px;
+}
+
+.tag-past    { background: rgba(36,53,86,.12);  color: var(--navy); }
+.tag-current { background: rgba(196,92,42,.15); color: var(--rust); }
+
+.trip-year-badge {
+  font-family: var(--serif);
+  font-size: 2.8rem;
+  color: var(--tan);
+  line-height: 1;
+  user-select: none;
+}
+
+/* ── CARD BODY / PLACEHOLDERS ── */
+.trip-card-body { padding: 1.4rem 1.8rem 1.8rem; }
+
+.placeholder-hint {
+  font-size: .72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+  color: var(--gold);
+  margin-bottom: .8rem;
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+}
+
+.placeholder-hint::after { content: ''; flex: 1; height: 1px; background: var(--tan); }
+
+.placeholder-lines { display: flex; flex-direction: column; gap: 9px; margin-bottom: 1.4rem; }
+
+.pl { height: 13px; background: var(--tan); border-radius: 3px; opacity: .7; }
+.pl.w95 { width: 95%; }
+.pl.w88 { width: 88%; }
+.pl.w80 { width: 80%; }
+.pl.w70 { width: 70%; }
+.pl.w60 { width: 60%; }
+
+/* ── PHOTO STRIP ── */
+.photo-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.photo-box {
+  aspect-ratio: 4/3;
+  background: var(--cream);
+  border: 2px dashed rgba(212,150,10,.35);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: var(--muted);
+}
+
+.photo-box svg { width: 24px; height: 24px; opacity: .45; }
+
+.photo-box span {
+  font-size: .65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: .6;
+}
+
+/* ── CURRENT (rust header) ── */
+.trip-card.current { border-color: var(--rust); }
+
+.trip-card.current .trip-card-header {
+  background: var(--rust);
+  border-bottom-color: rgba(255,255,255,.2);
+}
+
+.trip-card.current .trip-card-header h2        { color: #FFFDF6; }
+.trip-card.current .trip-card-header h2 span   { color: var(--gold-lt); }
+.trip-card.current .trip-year-badge            { color: rgba(255,255,255,.2); }
+
+.now-airing {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: .72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+  color: var(--gold-lt);
+  margin-bottom: .5rem;
+}
+
+.pulse {
+  width: 8px; height: 8px;
+  background: var(--gold-lt);
+  border-radius: 50%;
+  animation: pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%       { transform: scale(1.6); opacity: .4; }
+}
+
+/* ── DIVIDER ── */
+.chapter-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2.6rem 0 2.2rem;
+}
+
+.chapter-divider::before,
+.chapter-divider::after { content: ''; flex: 1; height: 2px; background: var(--tan); border-radius: 2px; }
+
+.chapter-divider span {
+  font-size: .7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* ── FOOTER ── */
+footer {
+  position: relative;
+  z-index: 1;
+  background: var(--navy);
+  color: var(--tan);
+  text-align: center;
+  padding: 2rem;
+  font-size: .82rem;
+  border-top: 3px solid var(--gold);
+}
+
+footer .footer-logo { font-family: var(--serif); font-size: 1.5rem; color: var(--gold-lt); margin-bottom: .4rem; }
+footer p { color: rgba(232,217,184,.55); margin-top: .3rem; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-in   { animation: fadeUp .7s ease both; }
+.fade-in-2 { animation: fadeUp .7s .15s ease both; }
+.fade-in-3 { animation: fadeUp .7s .3s ease both; }
+.fade-in-4 { animation: fadeUp .7s .45s ease both; }
+
+@media (max-width: 560px) {
+  .trip-card-header     { flex-direction: column; }
+  .trip-year-badge      { font-size: 2rem; align-self: flex-end; }
+  .photo-strip          { grid-template-columns: 1fr 1fr; }
+  .photo-strip .photo-box:last-child { display: none; }
+  .nav-links            { gap: .9rem; }
+}
+```
+
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+
+<nav>
+  <a href="index.html" class="nav-logo">Small-Cox, Big Projects</a>
+  <ul class="nav-links">
+    <li><a href="index.html#channels">Channels</a></li>
+    <li><a href="index.html#big-projects">Big Projects</a></li>
+    <li><a href="index.html#lakehouse">Lake House</a></li>
+    <li><a href="big-trips.html" class="active">Big Trips</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+
+<div class="hero">
+  <div class="hero-tape">Adventures Through Time</div>
+  <h1 class="fade-in">Big <span>Trips.</span></h1>
+  <p class="hero-sub fade-in-2">Larger vacations &amp; adventures — past, present, and whatever's next. ✈️🌍🛳️</p>
+  <svg class="hero-wave" viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,0 C360,60 1080,60 1440,0 L1440,60 L0,60 Z" fill="#FAF4E8"/>
+  </svg>
+</div>
+
+<!-- QUICK JUMP -->
+
+<div class="trip-nav">
+  <a href="#alaska-2017">🏔️ Alaska 2017</a>
+  <a href="#africa-2023">🦁 Africa 2023</a>
+  <a href="#puerto-rico-2026" class="now">🛳️ Puerto Rico 2026</a>
+</div>
+
+<!-- MAIN -->
+
+<main>
+
+  <div class="section-label fade-in-3">🗺️ The Big Adventures</div>
+
+  <!-- ══ ALASKA 2017 ══ -->
+
+  <div class="trip-card fade-in-3" id="alaska-2017">
+    <div class="trip-card-header">
+      <div>
+        <span class="trip-icon">🏔️</span>
+        <h2>Alaska <span>2017</span></h2>
+        <div class="trip-meta-row">
+          <span class="trip-tag tag-past">Past Adventure</span>
+        </div>
+      </div>
+      <div class="trip-year-badge">2017</div>
+    </div>
+    <div class="trip-card-body">
+      <div class="placeholder-hint">Your story goes here ✏️</div>
+      <div class="placeholder-lines">
+        <div class="pl w95"></div>
+        <div class="pl w80"></div>
+        <div class="pl w88"></div>
+        <div class="pl w70"></div>
+        <div class="pl w60"></div>
+      </div>
+      <div class="photo-strip">
+        <div class="photo-box">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4-4 4 4 4-6 4 6M3 8.5A1.5 1.5 0 014.5 7h15A1.5 1.5 0 0121 8.5v10A1.5 1.5 0 0119.5 20h-15A1.5 1.5 0 013 18.5V8.5z"/></svg>
+          <span>Add Photo</span>
+        </div>
+        <div class="photo-box">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4-4 4 4 4-6 4 6M3 8.5A1.5 1.5 0 014.5 7h15A1.5 1.5 0 0121 8.5v10A1.5 1.5 0 0119.5 20h-15A1.5 1.5 0 013 18.5V8.5z"/></svg>
+          <span>Add Photo</span>
+        </div>
+        <div class="photo-box">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4-4 4 4 4-6 4 6M3 8.5A1.5 1.5 0 014.5 7h15A1.5 1.5 0 0121 8.5v10A1.5 1.5 0 0119.5 20h-15A1.5 1.5 0 013 18.5V8.5z"/></svg>
+          <span>Add Photo</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chapter-divider"><span>next chapter</span></div>
+
+  <!-- ══ AFRICA 2023 ══ -->
+
+  <div class="trip-card fade-in-4" id="africa-2023">
+    <div class="trip-card-header">
+      <div>
+        <span class="trip-icon">🦁</span>
+        <h2>Africa <span>2023</span></h2>
+        <div class="trip-meta-row">
+          <span class="trip-tag tag-past">Past Adventure</span>
+        </div>
+      </div>
+      <div class="trip-year-badge">2023</div>
+    </div>
+    <div class="trip-card-body">
+      <div class="placeholder-hint">Your story goes here ✏️</div>
+      <div class="placeholder-lines">
+        <div class="pl w88"></div>
+        <div class="pl w95"></div>
+        <div class="pl w70"></div>
+        <div class="pl w80"></div>
+        <div class="pl w60"></div>
+      </div>
+      <div class="photo-strip">
+        <div class="photo-box">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4-4 4 4 4-6 4 6M3 8.5A1.5 1.5 0 014.5 7h15A1.5 1.5 0 0121 8.5v10A1.5 1.5 0 0119.5 20h-15A1.5 1.5 0 013 18.5V8.5z"/></svg>
+          <span>Add Photo</span>
+        </div>
+        <div class="photo-box">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4-4 4 4 4-6 4 6M3 8.5A1.5 1.5 0 014.5 7h15A1.5 1.5 0 0121 8.5v10A1.5 1.5 0 0119.5 20h-15A1.5 1.5 0 013 18.5V8.5z"/></svg>
+          <span>Add Photo</span>
+        </div>
+        <div class="photo-box">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4-4 4 4 4-6 4 6M3 8.5A1.5 1.5 0 014.5 7h15A1.5 1.5 0 0121 8.5v10A1.5 1.5 0 0119.5 20h-15A1.5 1.5 0 013 18.5V8.5z"/></svg>
+          <span>Add Photo</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chapter-divider"><span>happening now</span></div>
+
+  <!-- ══ PUERTO RICO CRUISE 2026 ══ -->
+
+  <div class="trip-card current fade-in-4" id="puerto-rico-2026">
+    <div class="trip-card-header">
+      <div>
+        <div class="now-airing"><div class="pulse"></div> Now Happening — 2026</div>
+        <span class="trip-icon">🛳️</span>
+        <h2>Puerto Rico <span>Cruise</span></h2>
+        <div class="trip-meta-row">
+          <span class="trip-tag tag-current">In Progress</span>
+        </div>
+      </div>
+      <div class="trip-year-badge">2026</div>
+    </div>
+    <div class="trip-card-body">
+      <div class="placeholder-hint">Tell us about the cruise — ports, highlights, memories ✏️</div>
+      <div class="placeholder-lines">
+        <div class="pl w95"></div>
+        <div class="pl w88"></div>
+        <div class="pl w80"></div>
+        <div class="pl w70"></div>
+        <div class="pl w60"></div>
+      </div>
+      <div class="photo-strip">
+        <div class="photo-box">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4-4 4 4 4-6 4 6M3 8.5A1.5 1.5 0 014.5 7h15A1.5 1.5 0 0121 8.5v10A1.5 1.5 0 0119.5 20h-15A1.5 1.5 0 013 18.5V8.5z"/></svg>
+          <span>Add Photo</span>
+        </div>
+        <div class="photo-box">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4-4 4 4 4-6 4 6M3 8.5A1.5 1.5 0 014.5 7h15A1.5 1.5 0 0121 8.5v10A1.5 1.5 0 0119.5 20h-15A1.5 1.5 0 013 18.5V8.5z"/></svg>
+          <span>Add Photo</span>
+        </div>
+        <div class="photo-box">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4-4 4 4 4-6 4 6M3 8.5A1.5 1.5 0 014.5 7h15A1.5 1.5 0 0121 8.5v10A1.5 1.5 0 0119.5 20h-15A1.5 1.5 0 013 18.5V8.5z"/></svg>
+          <span>Add Photo</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="footer-logo">Small-Cox, Big Projects</div>
+  <p>Two people, one lake house, and a 3D printer that never sleeps.</p>
+  <p style="margin-top:.8rem;">© 2026 Tyler &amp; Mallory &bull; Made with love, sawdust, and PLA filament.</p>
+</footer>
+
+</body>
+</html>
