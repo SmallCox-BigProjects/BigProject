@@ -44,6 +44,6 @@ All pages share the same color palette and typography defined in `:root`:
 
 Fonts (Google Fonts): `Abril Fatface` for display/headings (`--serif`), `Nunito` for body (`--sans`).
 
-## Known Issue
+## Nav Structure
 
-`index.html` uses en-dashes (`–`) instead of double-dashes (`--`) for CSS custom property names in its `:root` block and property references (e.g., `–cream` instead of `--cream`). The other three pages correctly use `--`. This means `index.html`'s CSS variables don't actually resolve — browsers fall back to initial values. When editing `index.html`, fix these to use `--` syntax.
+All pages share the same nav bar (four links + logo). The consistent set is: Channels → `index.html#channels`, Lake House → `index.html#lakehouse`, About → `index.html#about`, Big Trips → `big-trips.html`. The active page's link gets `class="active"`. When adding a new page, update the nav in all four HTML files.

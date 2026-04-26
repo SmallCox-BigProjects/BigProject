@@ -10,27 +10,27 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-–cream: #FAF4E8;
-–tan: #E8D9B8;
-–rust: #C45C2A;
-–rust-lt: #E87B48;
-–forest: #3A5E42;
-–forest-lt:#5A8C63;
-–navy: #243556;
-–gold: #D4960A;
-–gold-lt: #F2B830;
-–brown: #6B3F1F;
-–ink: #1E1810;
-–muted: #7A6A54;
-–card-bg: #FFFDF6;
-–serif: ‘Abril Fatface’, serif;
-–sans: ‘Nunito’, sans-serif;
+--cream: #FAF4E8;
+--tan: #E8D9B8;
+--rust: #C45C2A;
+--rust-lt: #E87B48;
+--forest: #3A5E42;
+--forest-lt:#5A8C63;
+--navy: #243556;
+--gold: #D4960A;
+--gold-lt: #F2B830;
+--brown: #6B3F1F;
+--ink: #1E1810;
+--muted: #7A6A54;
+--card-bg: #FFFDF6;
+--serif: ‘Abril Fatface’, serif;
+--sans: ‘Nunito’, sans-serif;
 }
 
 body {
-background-color: var(–cream);
-font-family: var(–sans);
-color: var(–ink);
+background-color: var(--cream);
+font-family: var(--sans);
+color: var(--ink);
 overflow-x: hidden;
 }
 
@@ -51,19 +51,19 @@ nav {
 position: sticky;
 top: 0;
 z-index: 100;
-background: var(–navy);
+background: var(--navy);
 padding: 0 2rem;
 display: flex;
 align-items: center;
 justify-content: space-between;
 height: 54px;
-border-bottom: 3px solid var(–gold);
+border-bottom: 3px solid var(--gold);
 }
 
 .nav-logo {
-font-family: var(–serif);
+font-family: var(--serif);
 font-size: 1.15rem;
-color: var(–gold-lt);
+color: var(--gold-lt);
 letter-spacing: .5px;
 text-decoration: none;
 }
@@ -79,18 +79,18 @@ font-size: .8rem;
 font-weight: 700;
 text-transform: uppercase;
 letter-spacing: 1.2px;
-color: var(–tan);
+color: var(--tan);
 text-decoration: none;
 transition: color .2s;
 }
 
-.nav-links a:hover { color: var(–gold-lt); }
+.nav-links a:hover { color: var(--gold-lt); }
 
 /* ── HERO BANNER ── */
 .hero {
 position: relative;
 z-index: 1;
-background: var(–navy);
+background: var(--navy);
 padding: 3.5rem 2rem 0;
 text-align: center;
 overflow: hidden;
@@ -98,9 +98,9 @@ overflow: hidden;
 
 .hero-tape {
 display: inline-block;
-background: var(–gold);
-color: var(–navy);
-font-family: var(–sans);
+background: var(--gold);
+color: var(--navy);
+font-family: var(--sans);
 font-weight: 700;
 font-size: .72rem;
 text-transform: uppercase;
@@ -111,7 +111,7 @@ margin-bottom: 1.1rem;
 }
 
 .hero h1 {
-font-family: var(–serif);
+font-family: var(--serif);
 font-size: clamp(2.6rem, 8vw, 5.2rem);
 line-height: 1.0;
 color: #FFFDF6;
@@ -119,11 +119,11 @@ margin-bottom: .6rem;
 letter-spacing: .5px;
 }
 
-.hero h1 span { color: var(–gold-lt); }
+.hero h1 span { color: var(--gold-lt); }
 
 .hero-sub {
 font-size: 1.05rem;
-color: var(–tan);
+color: var(--tan);
 font-style: italic;
 font-weight: 600;
 margin-bottom: 2.8rem;
@@ -141,7 +141,7 @@ line-height: 0;
 .meet {
 position: relative;
 z-index: 1;
-background: var(–cream);
+background: var(--cream);
 padding: 4rem 1.5rem 3rem;
 max-width: 900px;
 margin: 0 auto;
@@ -149,9 +149,9 @@ margin: 0 auto;
 
 .section-label {
 display: inline-block;
-font-family: var(–serif);
+font-family: var(--serif);
 font-size: .85rem;
-background: var(–rust);
+background: var(--rust);
 color: #fff;
 padding: 4px 14px;
 border-radius: 3px;
@@ -168,8 +168,8 @@ gap: 1.5rem;
 @media (max-width: 560px) { .duo-cards { grid-template-columns: 1fr; } }
 
 .person-card {
-background: var(–card-bg);
-border: 2px solid var(–tan);
+background: var(--card-bg);
+border: 2px solid var(--tan);
 border-radius: 12px;
 padding: 1.8rem 1.5rem 1.5rem;
 position: relative;
@@ -179,7 +179,7 @@ cursor: default;
 
 .person-card:hover {
 transform: rotate(0deg) translateY(-4px);
-box-shadow: 6px 8px 0 var(–tan);
+box-shadow: 6px 8px 0 var(--tan);
 }
 
 .person-card:first-child { transform: rotate(-1.2deg); }
@@ -190,9 +190,9 @@ box-shadow: 6px 8px 0 var(–tan);
 .person-badge {
 position: absolute;
 top: -14px; left: 18px;
-background: var(–navy);
-color: var(–gold-lt);
-font-family: var(–serif);
+background: var(--navy);
+color: var(--gold-lt);
+font-family: var(--serif);
 font-size: .8rem;
 padding: 3px 12px;
 border-radius: 20px;
@@ -200,17 +200,17 @@ letter-spacing: .5px;
 }
 
 .person-card h2 {
-font-family: var(–serif);
+font-family: var(--serif);
 font-size: 2rem;
-color: var(–navy);
+color: var(--navy);
 margin: .5rem 0 .5rem;
 line-height: 1;
 }
 
 .person-card .role-tag {
 display: inline-block;
-background: var(–tan);
-color: var(–brown);
+background: var(--tan);
+color: var(--brown);
 font-size: .72rem;
 font-weight: 700;
 text-transform: uppercase;
@@ -223,7 +223,7 @@ margin-bottom: .9rem;
 .person-card p {
 font-size: .92rem;
 line-height: 1.65;
-color: var(–muted);
+color: var(--muted);
 }
 
 .person-card .emojis {
@@ -236,9 +236,9 @@ letter-spacing: 4px;
 .connector {
 text-align: center;
 padding: 1rem 0;
-font-family: var(–serif);
+font-family: var(--serif);
 font-size: 2rem;
-color: var(–rust);
+color: var(--rust);
 position: relative;
 z-index: 1;
 }
@@ -247,23 +247,23 @@ z-index: 1;
 .intro-blurb {
 position: relative;
 z-index: 1;
-background: var(–forest);
-color: var(–cream);
+background: var(--forest);
+color: var(--cream);
 padding: 2.8rem 2rem;
 text-align: center;
 }
 
 .intro-blurb blockquote {
-font-family: var(–serif);
+font-family: var(--serif);
 font-size: clamp(1.3rem, 3.5vw, 2rem);
 line-height: 1.4;
 max-width: 780px;
 margin: 0 auto .8rem;
-color: var(–tan);
+color: var(--tan);
 }
 
 .intro-blurb blockquote em {
-color: var(–gold-lt);
+color: var(--gold-lt);
 font-style: normal;
 }
 
@@ -291,14 +291,14 @@ flex-wrap: wrap;
 }
 
 .channels-header h2 {
-font-family: var(–serif);
+font-family: var(--serif);
 font-size: 2.2rem;
-color: var(–navy);
+color: var(--navy);
 }
 
 .channels-header p {
 font-size: .9rem;
-color: var(–muted);
+color: var(--muted);
 font-style: italic;
 }
 
@@ -311,8 +311,8 @@ gap: 1.4rem;
 @media (max-width: 680px) { .channel-grid { grid-template-columns: 1fr; } }
 
 .channel-card {
-background: var(–card-bg);
-border: 2px solid var(–tan);
+background: var(--card-bg);
+border: 2px solid var(--tan);
 border-radius: 14px;
 overflow: hidden;
 transition: transform .2s, box-shadow .2s;
@@ -320,12 +320,12 @@ transition: transform .2s, box-shadow .2s;
 
 .channel-card:hover {
 transform: translateY(-5px);
-box-shadow: 5px 7px 0 var(–tan);
+box-shadow: 5px 7px 0 var(--tan);
 }
 
 .channel-header {
 padding: 1.4rem 1.3rem 1rem;
-border-bottom: 2px dashed var(–tan);
+border-bottom: 2px dashed var(--tan);
 }
 
 .channel-icon {
@@ -335,9 +335,9 @@ display: block;
 }
 
 .channel-card h3 {
-font-family: var(–serif);
+font-family: var(--serif);
 font-size: 1.4rem;
-color: var(–navy);
+color: var(--navy);
 line-height: 1.1;
 margin-bottom: .3rem;
 }
@@ -352,10 +352,10 @@ padding: 2px 9px;
 border-radius: 3px;
 }
 
-.tag-rust { background: rgba(196,92,42,.15); color: var(–rust); }
-.tag-forest { background: rgba(58,94,66,.15); color: var(–forest); }
-.tag-navy { background: rgba(36,53,86,.12); color: var(–navy); }
-.tag-gold { background: rgba(212,150,10,.15); color: var(–gold); }
+.tag-rust { background: rgba(196,92,42,.15); color: var(--rust); }
+.tag-forest { background: rgba(58,94,66,.15); color: var(--forest); }
+.tag-navy { background: rgba(36,53,86,.12); color: var(--navy); }
+.tag-gold { background: rgba(212,150,10,.15); color: var(--gold); }
 
 .channel-body {
 padding: 1rem 1.3rem 1.3rem;
@@ -364,7 +364,7 @@ padding: 1rem 1.3rem 1.3rem;
 .channel-body p {
 font-size: .88rem;
 line-height: 1.6;
-color: var(–muted);
+color: var(--muted);
 margin-bottom: .9rem;
 }
 
@@ -374,20 +374,20 @@ font-size: .78rem;
 font-weight: 700;
 text-transform: uppercase;
 letter-spacing: 1px;
-color: var(–rust);
+color: var(--rust);
 text-decoration: none;
-border-bottom: 2px solid var(–rust-lt);
+border-bottom: 2px solid var(--rust-lt);
 padding-bottom: 1px;
 transition: color .2s, border-color .2s;
 }
 
-.channel-cta:hover { color: var(–brown); border-color: var(–brown); }
+.channel-cta:hover { color: var(--brown); border-color: var(--brown); }
 
 /* ── BIG PROJECT SPOTLIGHT ── */
 .spotlight {
 position: relative;
 z-index: 1;
-background: var(–rust);
+background: var(--rust);
 padding: 3rem 2rem;
 overflow: hidden;
 }
@@ -395,7 +395,7 @@ overflow: hidden;
 .spotlight::before {
 content: ‘THE LAKE HOUSE’;
 position: absolute;
-font-family: var(–serif);
+font-family: var(--serif);
 font-size: clamp(4rem, 12vw, 9rem);
 color: rgba(255,255,255,.06);
 top: 50%;
@@ -424,12 +424,12 @@ font-size: .72rem;
 font-weight: 700;
 text-transform: uppercase;
 letter-spacing: 2px;
-color: var(–gold-lt);
+color: var(--gold-lt);
 margin-bottom: .6rem;
 }
 
 .spotlight h2 {
-font-family: var(–serif);
+font-family: var(--serif);
 font-size: clamp(1.8rem, 4vw, 2.8rem);
 color: #FFFDF6;
 line-height: 1.1;
@@ -445,8 +445,8 @@ margin-bottom: 1.2rem;
 
 .spotlight-btn {
 display: inline-block;
-background: var(–gold);
-color: var(–navy);
+background: var(--gold);
+color: var(--navy);
 font-size: .8rem;
 font-weight: 700;
 text-transform: uppercase;
@@ -457,7 +457,7 @@ text-decoration: none;
 transition: background .2s;
 }
 
-.spotlight-btn:hover { background: var(–gold-lt); }
+.spotlight-btn:hover { background: var(--gold-lt); }
 
 .cast-list {
 background: rgba(0,0,0,.18);
@@ -466,9 +466,9 @@ padding: 1.3rem 1.4rem;
 }
 
 .cast-list h4 {
-font-family: var(–serif);
+font-family: var(--serif);
 font-size: 1.1rem;
-color: var(–gold-lt);
+color: var(--gold-lt);
 margin-bottom: 1rem;
 }
 
@@ -489,7 +489,7 @@ align-items: center;
 justify-content: center;
 font-size: .75rem;
 font-weight: 700;
-color: var(–gold-lt);
+color: var(--gold-lt);
 flex-shrink: 0;
 letter-spacing: -.5px;
 }
@@ -501,18 +501,18 @@ letter-spacing: -.5px;
 footer {
 position: relative;
 z-index: 1;
-background: var(–navy);
-color: var(–tan);
+background: var(--navy);
+color: var(--tan);
 text-align: center;
 padding: 2rem;
 font-size: .82rem;
-border-top: 3px solid var(–gold);
+border-top: 3px solid var(--gold);
 }
 
 footer .footer-logo {
-font-family: var(–serif);
+font-family: var(--serif);
 font-size: 1.5rem;
-color: var(–gold-lt);
+color: var(--gold-lt);
 margin-bottom: .4rem;
 }
 
@@ -612,7 +612,6 @@ to { opacity: 1; transform: translateY(0); }
   </div>
   <div class="channel-grid">
 
-```
 <!-- Big Projects -->
 <div class="channel-card">
   <div class="channel-header">
@@ -664,7 +663,6 @@ to { opacity: 1; transform: translateY(0); }
     <a href="big-trips.html" class="channel-cta">See the adventures →</a>
   </div>
 </div>
-```
 
   </div>
 </section>
