@@ -1,0 +1,185 @@
+/* Google Fonts loaded via <link> in each HTML file */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream:    #FAF4E8;
+  --tan:      #E8D9B8;
+  --rust:     #C45C2A;
+  --rust-lt:  #E87B48;
+  --forest:   #3A5E42;
+  --forest-lt:#5A8C63;
+  --navy:     #243556;
+  --gold:     #D4960A;
+  --gold-lt:  #F2B830;
+  --brown:    #6B3F1F;
+  --ink:      #1E1810;
+  --muted:    #7A6A54;
+  --card-bg:  #FFFDF6;
+  --serif:    'Abril Fatface', serif;
+  --sans:     'Nunito', sans-serif;
+}
+
+body {
+  background-color: var(--cream);
+  font-family: var(--sans);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg,   transparent, transparent 2px, rgba(139,110,60,.03) 2px, rgba(139,110,60,.03) 3px),
+    repeating-linear-gradient(90deg,  transparent, transparent 2px, rgba(139,110,60,.02) 2px, rgba(139,110,60,.02) 3px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── ACCESSIBILITY ── */
+:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  background: var(--navy);
+  color: var(--gold-lt);
+  padding: .5rem 1rem;
+  font-weight: 700;
+  border-radius: 0 0 4px 4px;
+  text-decoration: none;
+  z-index: 200;
+}
+.skip-link:focus { top: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in, .fade-in-2, .fade-in-3 { animation: none; }
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--navy);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 54px;
+  border-bottom: 3px solid var(--gold);
+}
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  color: var(--gold-lt);
+  letter-spacing: .5px;
+  text-decoration: none;
+}
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+.nav-links a {
+  font-size: .8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--tan);
+  text-decoration: none;
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--gold-lt); }
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  z-index: 1;
+  background: var(--navy);
+  padding: 3.5rem 2rem 0;
+  text-align: center;
+  overflow: hidden;
+}
+.hero-tape {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--navy);
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 5px 18px;
+  border-radius: 3px;
+  margin-bottom: 1.1rem;
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(2.6rem, 8vw, 5.2rem);
+  line-height: 1.0;
+  color: #FFFDF6;
+  margin-bottom: .6rem;
+  letter-spacing: .5px;
+}
+.hero h1 span { color: var(--gold-lt); }
+.hero-sub {
+  font-size: 1.05rem;
+  color: var(--tan);
+  font-style: italic;
+  font-weight: 600;
+  margin-bottom: 2.8rem;
+}
+.hero-wave {
+  display: block;
+  width: 100%;
+  margin-bottom: -2px;
+  line-height: 0;
+}
+
+/* ── SECTION LABEL ── */
+.section-label {
+  display: inline-block;
+  font-family: var(--serif);
+  font-size: .85rem;
+  background: var(--rust);
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 3px;
+  letter-spacing: .5px;
+  margin-bottom: 1.6rem;
+}
+
+/* ── FOOTER ── */
+footer {
+  position: relative;
+  z-index: 1;
+  background: var(--navy);
+  color: var(--tan);
+  text-align: center;
+  padding: 2rem;
+  font-size: .82rem;
+  border-top: 3px solid var(--gold);
+}
+footer .footer-logo {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  color: var(--gold-lt);
+  margin-bottom: .4rem;
+}
+footer p { color: rgba(232,217,184,.75); margin-top: .3rem; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-in   { animation: fadeUp .7s ease both; }
+.fade-in-2 { animation: fadeUp .7s .15s ease both; }
+.fade-in-3 { animation: fadeUp .7s .3s ease both; }

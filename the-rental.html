@@ -5,97 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Rental — Small-Cox, Big Projects</title>
 <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Nunito:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+  /* ── PAGE-SPECIFIC VARS ── */
   :root {
-    --cream:    #FAF4E8;
-    --tan:      #E8D9B8;
-    --rust:     #C45C2A;
-    --rust-lt:  #E87B48;
-    --forest:   #3A5E42;
-    --forest-lt:#5A8C63;
-    --navy:     #243556;
-    --gold:     #D4960A;
-    --gold-lt:  #F2B830;
-    --brown:    #6B3F1F;
-    --ink:      #1E1810;
-    --muted:    #7A6A54;
-    --card-bg:  #FFFDF6;
-    --serif:    'Abril Fatface', serif;
-    --sans:     'Nunito', sans-serif;
-
     --before-c: #C45C2A;
     --during-c: #D4960A;
     --after-c:  #3A5E42;
   }
 
-  body {
-    background-color: var(--cream);
-    font-family: var(--sans);
-    color: var(--ink);
-    overflow-x: hidden;
-  }
+  /* ── HERO OVERRIDE ── */
+  .hero-sub { margin-bottom: 1.6rem; }
 
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      repeating-linear-gradient(0deg,   transparent, transparent 2px, rgba(139,110,60,.03) 2px, rgba(139,110,60,.03) 3px),
-      repeating-linear-gradient(90deg,  transparent, transparent 2px, rgba(139,110,60,.02) 2px, rgba(139,110,60,.02) 3px);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  /* ── NAV ── */
-  nav {
-    position: sticky; top: 0; z-index: 100;
-    background: var(--navy);
-    padding: 0 2rem;
-    display: flex; align-items: center; justify-content: space-between;
-    height: 54px;
-    border-bottom: 3px solid var(--gold);
-  }
-  .nav-logo {
-    font-family: var(--serif); font-size: 1.15rem;
-    color: var(--gold-lt); letter-spacing: .5px; text-decoration: none;
-  }
-  .nav-links { display: flex; gap: 1.5rem; list-style: none; }
-  .nav-links a {
-    font-size: .8rem; font-weight: 700; text-transform: uppercase;
-    letter-spacing: 1.2px; color: var(--tan); text-decoration: none; transition: color .2s;
-  }
-  .nav-links a:hover { color: var(--gold-lt); }
-
-  /* ── HERO ── */
-  .hero {
-    position: relative; z-index: 1;
-    background: var(--navy);
-    padding: 3.5rem 2rem 0;
-    text-align: center; overflow: hidden;
-  }
-  .hero-tape {
-    display: inline-block; background: var(--gold); color: var(--navy);
-    font-weight: 700; font-size: .72rem; text-transform: uppercase;
-    letter-spacing: 2px; padding: 5px 18px; border-radius: 3px; margin-bottom: 1.1rem;
-  }
+  /* ── BREADCRUMB ── */
   .breadcrumb-nav {
-    font-size: .75rem; color: rgba(232,217,184,.55);
+    font-size: .75rem; color: rgba(232,217,184,.75);
     margin-bottom: .8rem; letter-spacing: .5px;
   }
   .breadcrumb-nav a { color: var(--gold-lt); text-decoration: none; }
   .breadcrumb-nav a:hover { text-decoration: underline; }
-  .hero h1 {
-    font-family: var(--serif);
-    font-size: clamp(2.6rem, 8vw, 5.2rem);
-    line-height: 1.0; color: #FFFDF6; margin-bottom: .4rem; letter-spacing: .5px;
-  }
-  .hero h1 span { color: var(--gold-lt); }
-  .hero-sub {
-    font-size: 1.05rem; color: var(--tan);
-    font-style: italic; font-weight: 600; margin-bottom: 1.6rem;
-  }
+
+  /* ── HERO META PILLS ── */
   .hero-meta-pills {
     display: flex; flex-wrap: wrap; justify-content: center;
     gap: .6rem; margin-bottom: 2.8rem;
@@ -107,7 +37,6 @@
     letter-spacing: .5px;
   }
   .meta-pill span { color: var(--gold-lt); }
-  .hero-wave { display: block; width: 100%; margin-bottom: -2px; line-height: 0; }
 
   /* ── ORIGIN STORY ── */
   .origin {
@@ -115,11 +44,6 @@
     background: var(--cream);
     padding: 3.5rem 1.5rem 2.5rem;
     max-width: 820px; margin: 0 auto; text-align: center;
-  }
-  .section-label {
-    display: inline-block; font-family: var(--serif); font-size: .85rem;
-    background: var(--rust); color: #fff; padding: 4px 14px;
-    border-radius: 3px; letter-spacing: .5px; margin-bottom: 1.4rem;
   }
   .origin blockquote {
     font-family: var(--serif);
@@ -129,7 +53,7 @@
   .origin blockquote em { color: var(--rust); font-style: normal; }
   .origin p { font-size: .95rem; color: var(--muted); line-height: 1.7; max-width: 640px; margin: 0 auto; }
 
-  /* ── GALLERY SECTION ── */
+  /* ── GALLERY ── */
   .gallery-wrap {
     position: relative; z-index: 1;
     padding: 1rem 1.5rem 4rem;
@@ -275,21 +199,6 @@
   }
   .drive-note a.btn-drive:hover { background: var(--brown); }
 
-  /* ── FOOTER ── */
-  footer {
-    position: relative; z-index: 1;
-    background: var(--navy); color: var(--tan);
-    text-align: center; padding: 2rem;
-    font-size: .82rem; border-top: 3px solid var(--gold);
-  }
-  .footer-logo { font-family: var(--serif); font-size: 1.5rem; color: var(--gold-lt); margin-bottom: .4rem; }
-  footer p { color: rgba(232,217,184,.55); margin-top: .3rem; }
-
-  @keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:none; } }
-  .fade-in   { animation: fadeUp .7s ease both; }
-  .fade-in-2 { animation: fadeUp .7s .15s ease both; }
-  .fade-in-3 { animation: fadeUp .7s .3s ease both; }
-
   @media (max-width: 560px) {
     .phase-tab { padding: .7rem .4rem; font-size: .9rem; }
     .drive-note { flex-direction: column; }
@@ -298,32 +207,36 @@
 </head>
 <body>
 
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 <!-- NAV -->
-<nav>
+<nav aria-label="Primary">
   <a href="index.html" class="nav-logo">Small-Cox, Big Projects</a>
   <ul class="nav-links">
     <li><a href="index.html#channels">Channels</a></li>
+    <li><a href="index.html#big-projects">Big Projects</a></li>
     <li><a href="index.html#lakehouse">Lake House</a></li>
     <li><a href="index.html#about">About</a></li>
-    <li><a href="big-trips.html">Big Trips</a></li>
   </ul>
 </nav>
+
+<main id="main-content">
 
 <!-- HERO -->
 <div class="hero" id="about">
   <div class="breadcrumb-nav">
-    <a href="index.html">Home</a> › <a href="index.html#lakehouse">Big Projects</a> › The Rental
+    <a href="index.html">Home</a> › <a href="index.html#big-projects">Big Projects</a> › The Rental
   </div>
   <div class="hero-tape">Big Projects — Chapter 01</div>
   <h1 class="fade-in">The <span>Rental.</span></h1>
-  <p class="hero-sub fade-in-2">From shaggy blue carpet to brand-new-everything. 🏚️🔨✨</p>
+  <p class="hero-sub fade-in-2">From shaggy blue carpet to brand-new-everything. <span aria-hidden="true">🏚️🔨✨</span></p>
   <div class="hero-meta-pills fade-in-3">
     <span class="meta-pill">Built <span>1925</span></span>
     <span class="meta-pill">Purchased <span>2020</span></span>
     <span class="meta-pill">Cincinnati, <span>Ohio</span></span>
     <span class="meta-pill">Status <span>✅ Complete</span></span>
   </div>
-  <svg class="hero-wave" viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+  <svg class="hero-wave" viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
     <path d="M0,0 C360,60 1080,60 1440,0 L1440,60 L0,60 Z" fill="#FAF4E8"/>
   </svg>
 </div>
@@ -345,145 +258,145 @@
   </div>
 
   <!-- ROOM TABS -->
-  <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem;" id="room-tabs">
-    <button class="room-tab active" onclick="switchRoom('before-after')">🏠 Before &amp; After</button>
-    <button class="room-tab" onclick="switchRoom('kitchen')">🍳 Kitchen</button>
-    <button class="room-tab" onclick="switchRoom('first-floor')">🛋️ First Floor</button>
-    <button class="room-tab" onclick="switchRoom('master')">🛏️ Master Bed/Bath</button>
-    <button class="room-tab" onclick="switchRoom('upper-bed')">🛏️ Upper Bedrooms</button>
-    <button class="room-tab" onclick="switchRoom('upper-bath')">🚿 Upper Bathroom</button>
-    <button class="room-tab" onclick="switchRoom('stairwell')">🪜 Stairwell</button>
-    <button class="room-tab" onclick="switchRoom('mudroom')">🥾 Mudroom</button>
-    <button class="room-tab" onclick="switchRoom('outside')">🌿 Outside</button>
-    <button class="room-tab" onclick="switchRoom('basement')">🔧 Basement</button>
-    <button class="room-tab" onclick="switchRoom('windows')">🪟 Windows</button>
+  <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem;" id="room-tabs" role="tablist" aria-label="Browse by room">
+    <button class="room-tab active" role="tab" aria-selected="true"  aria-controls="panel-before-after" onclick="switchRoom('before-after')"><span aria-hidden="true">🏠</span> Before &amp; After</button>
+    <button class="room-tab" role="tab" aria-selected="false" aria-controls="panel-kitchen"      onclick="switchRoom('kitchen')"><span aria-hidden="true">🍳</span> Kitchen</button>
+    <button class="room-tab" role="tab" aria-selected="false" aria-controls="panel-first-floor"  onclick="switchRoom('first-floor')"><span aria-hidden="true">🛋️</span> First Floor</button>
+    <button class="room-tab" role="tab" aria-selected="false" aria-controls="panel-master"       onclick="switchRoom('master')"><span aria-hidden="true">🛏️</span> Master Bed/Bath</button>
+    <button class="room-tab" role="tab" aria-selected="false" aria-controls="panel-upper-bed"    onclick="switchRoom('upper-bed')"><span aria-hidden="true">🛏️</span> Upper Bedrooms</button>
+    <button class="room-tab" role="tab" aria-selected="false" aria-controls="panel-upper-bath"   onclick="switchRoom('upper-bath')"><span aria-hidden="true">🚿</span> Upper Bathroom</button>
+    <button class="room-tab" role="tab" aria-selected="false" aria-controls="panel-stairwell"    onclick="switchRoom('stairwell')"><span aria-hidden="true">🪜</span> Stairwell</button>
+    <button class="room-tab" role="tab" aria-selected="false" aria-controls="panel-mudroom"      onclick="switchRoom('mudroom')"><span aria-hidden="true">🥾</span> Mudroom</button>
+    <button class="room-tab" role="tab" aria-selected="false" aria-controls="panel-outside"      onclick="switchRoom('outside')"><span aria-hidden="true">🌿</span> Outside</button>
+    <button class="room-tab" role="tab" aria-selected="false" aria-controls="panel-basement"     onclick="switchRoom('basement')"><span aria-hidden="true">🔧</span> Basement</button>
+    <button class="room-tab" role="tab" aria-selected="false" aria-controls="panel-windows"      onclick="switchRoom('windows')"><span aria-hidden="true">🪟</span> Windows</button>
   </div>
 
   <!-- BEFORE & AFTER -->
-  <div class="gallery-panel active" id="panel-before-after">
+  <div class="gallery-panel active" id="panel-before-after" role="tabpanel">
     <div class="phase-intro">
-      <div class="pi-icon">🏠</div>
+      <div class="pi-icon" aria-hidden="true">🏠</div>
       <p><strong>The full transformation.</strong> Side-by-side comparisons from across the house — from the time machine we bought to the home we handed to its next chapter.</p>
     </div>
     <div class="photo-grid">
       <div class="photo-card before">
-        <img src="https://smallcox-bigprojects-public.s3.us-east-2.amazonaws.com/BigProjects/TheRental/reno_images/before/BathroomA.jpg" alt="Bathroom Before" onerror="this.parentElement.querySelector('.ph-fallback').style.display='flex';this.style.display='none'">
-        <div class="photo-placeholder ph-fallback" style="display:none"><span>📷</span><span class="ph-label">BathroomA</span></div>
+        <img src="https://smallcox-bigprojects-public.s3.us-east-2.amazonaws.com/BigProjects/TheRental/reno_images/before/BathroomA.jpg" alt="Bathroom before renovation" onerror="this.parentElement.querySelector('.ph-fallback').style.display='flex';this.style.display='none'">
+        <div class="photo-placeholder ph-fallback" style="display:none"><span aria-hidden="true">📷</span><span class="ph-label">BathroomA</span></div>
         <div class="card-body"><span class="phase-badge">Before</span><h4>Bathroom</h4><p>The original bathroom — untouched since 1925.</p></div>
       </div>
       <div class="photo-card after">
-        <img src="https://smallcox-bigprojects-public.s3.us-east-2.amazonaws.com/BigProjects/TheRental/reno_images/after/BathroomA.jpg" alt="Bathroom After" onerror="this.parentElement.querySelector('.ph-fallback').style.display='flex';this.style.display='none'">
-        <div class="photo-placeholder ph-fallback" style="display:none"><span>📷</span><span class="ph-label">BathroomA — After</span></div>
+        <img src="https://smallcox-bigprojects-public.s3.us-east-2.amazonaws.com/BigProjects/TheRental/reno_images/after/BathroomA.jpg" alt="Bathroom after renovation" onerror="this.parentElement.querySelector('.ph-fallback').style.display='flex';this.style.display='none'">
+        <div class="photo-placeholder ph-fallback" style="display:none"><span aria-hidden="true">📷</span><span class="ph-label">BathroomA — After</span></div>
         <div class="card-body"><span class="phase-badge">After</span><h4>Bathroom</h4><p>Fresh tile, new fixtures, modern finish.</p></div>
       </div>
       <div class="photo-card before">
-        <img src="https://smallcox-bigprojects-public.s3.us-east-2.amazonaws.com/BigProjects/TheRental/reno_images/before/Kitchen.jpg" alt="Kitchen Before" onerror="this.parentElement.querySelector('.ph-fallback').style.display='flex';this.style.display='none'">
-        <div class="photo-placeholder ph-fallback" style="display:none"><span>📷</span><span class="ph-label">Kitchen — Before</span></div>
+        <img src="https://smallcox-bigprojects-public.s3.us-east-2.amazonaws.com/BigProjects/TheRental/reno_images/before/Kitchen.jpg" alt="Kitchen before renovation" onerror="this.parentElement.querySelector('.ph-fallback').style.display='flex';this.style.display='none'">
+        <div class="photo-placeholder ph-fallback" style="display:none"><span aria-hidden="true">📷</span><span class="ph-label">Kitchen — Before</span></div>
         <div class="card-body"><span class="phase-badge">Before</span><h4>Kitchen</h4><p>Original everything. Decades of character (and grease).</p></div>
       </div>
       <div class="photo-card after">
-        <img src="https://smallcox-bigprojects-public.s3.us-east-2.amazonaws.com/BigProjects/TheRental/reno_images/after/Kitchen.jpg" alt="Kitchen After" onerror="this.parentElement.querySelector('.ph-fallback').style.display='flex';this.style.display='none'">
-        <div class="photo-placeholder ph-fallback" style="display:none"><span>📷</span><span class="ph-label">Kitchen — After</span></div>
+        <img src="https://smallcox-bigprojects-public.s3.us-east-2.amazonaws.com/BigProjects/TheRental/reno_images/after/Kitchen.jpg" alt="Kitchen after renovation" onerror="this.parentElement.querySelector('.ph-fallback').style.display='flex';this.style.display='none'">
+        <div class="photo-placeholder ph-fallback" style="display:none"><span aria-hidden="true">📷</span><span class="ph-label">Kitchen — After</span></div>
         <div class="card-body"><span class="phase-badge">After</span><h4>Kitchen</h4><p>Brand new everything. Mallory approved.</p></div>
       </div>
       <div class="photo-card before">
-        <img src="https://smallcox-bigprojects-public.s3.us-east-2.amazonaws.com/BigProjects/TheRental/reno_images/before/Outside.jpg" alt="Outside Before" onerror="this.parentElement.querySelector('.ph-fallback').style.display='flex';this.style.display='none'">
-        <div class="photo-placeholder ph-fallback" style="display:none"><span>📷</span><span class="ph-label">Outside — Before</span></div>
+        <img src="https://smallcox-bigprojects-public.s3.us-east-2.amazonaws.com/BigProjects/TheRental/reno_images/before/Outside.jpg" alt="Exterior before renovation" onerror="this.parentElement.querySelector('.ph-fallback').style.display='flex';this.style.display='none'">
+        <div class="photo-placeholder ph-fallback" style="display:none"><span aria-hidden="true">📷</span><span class="ph-label">Outside — Before</span></div>
         <div class="card-body"><span class="phase-badge">Before</span><h4>Exterior</h4><p>A 1925 original — foundation and all.</p></div>
       </div>
       <div class="photo-card after">
-        <img src="https://smallcox-bigprojects-public.s3.us-east-2.amazonaws.com/BigProjects/TheRental/reno_images/after/Outside.jpg" alt="Outside After" onerror="this.parentElement.querySelector('.ph-fallback').style.display='flex';this.style.display='none'">
-        <div class="photo-placeholder ph-fallback" style="display:none"><span>📷</span><span class="ph-label">Outside — After</span></div>
+        <img src="https://smallcox-bigprojects-public.s3.us-east-2.amazonaws.com/BigProjects/TheRental/reno_images/after/Outside.jpg" alt="Exterior after renovation" onerror="this.parentElement.querySelector('.ph-fallback').style.display='flex';this.style.display='none'">
+        <div class="photo-placeholder ph-fallback" style="display:none"><span aria-hidden="true">📷</span><span class="ph-label">Outside — After</span></div>
         <div class="card-body"><span class="phase-badge">After</span><h4>Exterior</h4><p>Curb appeal restored. 1925 structure, 2020 finish.</p></div>
       </div>
     </div>
   </div>
 
   <!-- KITCHEN -->
-  <div class="gallery-panel" id="panel-kitchen">
+  <div class="gallery-panel" id="panel-kitchen" role="tabpanel">
     <div class="phase-intro">
-      <div class="pi-icon">🍳</div>
+      <div class="pi-icon" aria-hidden="true">🍳</div>
       <p><strong>Kitchen.</strong> Original cabinets, original everything — then gutted and rebuilt from scratch. Brand new everything, Mallory approved.</p>
     </div>
     <div class="photo-grid" id="grid-kitchen"></div>
   </div>
 
   <!-- FIRST FLOOR -->
-  <div class="gallery-panel" id="panel-first-floor">
+  <div class="gallery-panel" id="panel-first-floor" role="tabpanel">
     <div class="phase-intro">
-      <div class="pi-icon">🛋️</div>
+      <div class="pi-icon" aria-hidden="true">🛋️</div>
       <p><strong>First Floor.</strong> The infamous shaggy blue carpet lived here. New floors, fresh walls, and a complete overhaul of the main living space.</p>
     </div>
     <div class="photo-grid" id="grid-first-floor"></div>
   </div>
 
   <!-- MASTER BED/BATH -->
-  <div class="gallery-panel" id="panel-master">
+  <div class="gallery-panel" id="panel-master" role="tabpanel">
     <div class="phase-intro">
-      <div class="pi-icon">🛏️</div>
+      <div class="pi-icon" aria-hidden="true">🛏️</div>
       <p><strong>Master Bed/Bath.</strong> A private retreat — rebuilt from the walls out.</p>
     </div>
     <div class="photo-grid" id="grid-master"></div>
   </div>
 
   <!-- UPPER BEDROOMS -->
-  <div class="gallery-panel" id="panel-upper-bed">
+  <div class="gallery-panel" id="panel-upper-bed" role="tabpanel">
     <div class="phase-intro">
-      <div class="pi-icon">🛏️</div>
+      <div class="pi-icon" aria-hidden="true">🛏️</div>
       <p><strong>Upper Bedrooms.</strong> The upper level rooms — freshened up and ready for the next family.</p>
     </div>
     <div class="photo-grid" id="grid-upper-bed"></div>
   </div>
 
   <!-- UPPER BATHROOM -->
-  <div class="gallery-panel" id="panel-upper-bath">
+  <div class="gallery-panel" id="panel-upper-bath" role="tabpanel">
     <div class="phase-intro">
-      <div class="pi-icon">🚿</div>
+      <div class="pi-icon" aria-hidden="true">🚿</div>
       <p><strong>Upper Bathroom.</strong> New tile, new fixtures — from vintage to move-in ready.</p>
     </div>
     <div class="photo-grid" id="grid-upper-bath"></div>
   </div>
 
   <!-- STAIRWELL -->
-  <div class="gallery-panel" id="panel-stairwell">
+  <div class="gallery-panel" id="panel-stairwell" role="tabpanel">
     <div class="phase-intro">
-      <div class="pi-icon">🪜</div>
+      <div class="pi-icon" aria-hidden="true">🪜</div>
       <p><strong>Stairwell.</strong> The spine of the house — stripped back and brought back to life.</p>
     </div>
     <div class="photo-grid" id="grid-stairwell"></div>
   </div>
 
   <!-- MUDROOM -->
-  <div class="gallery-panel" id="panel-mudroom">
+  <div class="gallery-panel" id="panel-mudroom" role="tabpanel">
     <div class="phase-intro">
-      <div class="pi-icon">🥾</div>
+      <div class="pi-icon" aria-hidden="true">🥾</div>
       <p><strong>Mudroom.</strong> The first thing you see coming in. Made it count.</p>
     </div>
     <div class="photo-grid" id="grid-mudroom"></div>
   </div>
 
   <!-- OUTSIDE -->
-  <div class="gallery-panel" id="panel-outside">
+  <div class="gallery-panel" id="panel-outside" role="tabpanel">
     <div class="phase-intro">
-      <div class="pi-icon">🌿</div>
+      <div class="pi-icon" aria-hidden="true">🌿</div>
       <p><strong>Outside.</strong> Curb appeal restored — 1925 bones, 2020 finish.</p>
     </div>
     <div class="photo-grid" id="grid-outside"></div>
   </div>
 
   <!-- BASEMENT -->
-  <div class="gallery-panel" id="panel-basement">
+  <div class="gallery-panel" id="panel-basement" role="tabpanel">
     <div class="phase-intro">
-      <div class="pi-icon">🔧</div>
+      <div class="pi-icon" aria-hidden="true">🔧</div>
       <p><strong>Basement.</strong> The unglamorous stuff that makes everything else possible — mechanical, structural, foundational.</p>
     </div>
     <div class="photo-grid" id="grid-basement"></div>
   </div>
 
   <!-- WINDOWS -->
-  <div class="gallery-panel" id="panel-windows">
+  <div class="gallery-panel" id="panel-windows" role="tabpanel">
     <div class="phase-intro">
-      <div class="pi-icon">🪟</div>
+      <div class="pi-icon" aria-hidden="true">🪟</div>
       <p><strong>Windows.</strong> New windows throughout — natural light, proper insulation, the works.</p>
     </div>
     <div class="photo-grid" id="grid-windows"></div>
@@ -491,18 +404,18 @@
 
 </div><!-- /gallery-wrap -->
 
+</main>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">Small-Cox, Big Projects</div>
   <p>The Rental — Chapter 01 of the Big Projects series.</p>
-  <p style="margin-top:.8rem;">© 2026 Tyler & Mallory &bull; Made with love, sawdust, and PLA filament.</p>
+  <p style="margin-top:.8rem;">© 2025 Tyler &amp; Mallory &bull; Made with love, sawdust, and PLA filament.</p>
 </footer>
 
 <script>
   const S3 = 'https://smallcox-bigprojects-public.s3.us-east-2.amazonaws.com/BigProjects/TheRental/reno_images';
 
-  // Room → { folder, phase, caption, files[] }
-  // Files are tried in order; onerror hides the card gracefully.
   const ROOMS = {
     'kitchen':    { folder:'Kitchen',       phase:'before', label:'Kitchen',        caption:'Original everything. Decades of character (and grease).',
                     files:['Kitchen.jpg','Kitchen1.jpg','Kitchen2.jpg','Kitchen3.jpg','KitchenA.jpg','KitchenB.jpg'] },
@@ -542,7 +455,6 @@
         <h4>${name}</h4>
         <p>${caption}</p>
       </div>`;
-    // hide card if image fails
     card.querySelector('img').onerror = () => card.style.display = 'none';
     return card;
   }
@@ -555,11 +467,9 @@
     grid.dataset.loaded = 'true';
 
     room.files.forEach(file => {
-      // Try both before/ and after/ prefixes for each file
       ['before','after','during'].forEach(phase => {
         const src = `${S3}/${phase}/${file}`;
         const card = makeCard(src, roomKey, file);
-        // Override phase badge to match actual folder
         card.querySelector('.phase-badge').textContent = phase.charAt(0).toUpperCase()+phase.slice(1);
         card.className = 'photo-card ' + phase;
         grid.appendChild(card);
@@ -568,9 +478,14 @@
   }
 
   function switchRoom(room) {
-    document.querySelectorAll('.room-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.room-tab').forEach(t => {
+      t.classList.remove('active');
+      t.setAttribute('aria-selected', 'false');
+    });
     document.querySelectorAll('.gallery-panel').forEach(p => p.classList.remove('active'));
-    document.querySelector(`[onclick="switchRoom('${room}')"]`).classList.add('active');
+    const activeTab = document.querySelector(`[aria-controls="panel-${room}"]`);
+    activeTab.classList.add('active');
+    activeTab.setAttribute('aria-selected', 'true');
     document.getElementById('panel-' + room).classList.add('active');
     if (room !== 'before-after') loadRoomGrid(room);
   }

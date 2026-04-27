@@ -36,10 +36,11 @@ Follow the pattern in existing pages: copy the nav, hero wave SVG, footer, and `
 
 ## Site Purpose & Audience
 This site showcases personal projects — a rental property renovation, a vacation propery renovation, 3D printing work, 
-and other ongoing ventures. The audience is [friends/family/potential renters/clients/general public?].
+and other ongoing ventures. The audience is friends and family staying in touch and general public through social media
 
 ## Content Tone & Voice
-[e.g., casual and personal, like talking to a friend. First-person. Enthusiastic about projects.]
+- Enthusiastic about projects
+- Clever and cute
 
 ## Content Goals
 - Share progress and updates on ongoing projects
@@ -47,8 +48,15 @@ and other ongoing ventures. The audience is [friends/family/potential renters/cl
 - Grow content across the channels section over time
 
 ## Channels (from index.html)
-[List what your channels grid links to — YouTube, blog, social, newsletter? 
-This helps Claude suggest content ideas that fit each channel.]
+- Big Projects (flagship) -> Full-scale renovations, flips, and builds.
+- - Current focus is The Lakehouse
+- - Prior Big Projects were 'The Rental' and 'The Homestead'
+- Guest Stars (friends and family) -> a display of cards for ourselves, friends, and family
+- - A card will contain a name, funny title, short description, and may contain a photo
+- - Posts and other content within the sight may reference these cards
+- Lil projects (3d printing) -> A catalog of fun things I've designed and printed
+- Big Trips -> Collection of Travels.  A sub-blog for our big trips which include descriptions and pictures
+- - Prior Big Trips include Alaska, Italy, Africa, Mediterranean Cruise
 
 ## Content Types I Want Help With
 - Blog post drafts
